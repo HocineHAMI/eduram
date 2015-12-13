@@ -6,5 +6,26 @@ import java.util.ArrayList;
  * Created by victor on 08/12/15.
  */
 public class Room {
-    private ArrayList<Object> neighboorsRooms;
+    private ArrayList<Room> neighboorsRooms;
+    private Building building;
+
+        public Room(Building building){
+
+            neighboorsRooms = new ArrayList<Room>();
+            this.building = building;
+
+        }
+
+    public void addNeighboor(Room room){
+
+        this.neighboorsRooms.add(room);
+
+    }
+
+
+    public String toString(){
+
+        return "# I am a room and I've : #"+neighboorsRooms.size()+" neighboors\n";
+
+    }
 }
