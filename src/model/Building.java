@@ -74,6 +74,10 @@ public class Building
         return "I am a building \n"+rooms;
     }
 
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
     public static void main(String[] args){
 
         Building b = new Building(5,3);

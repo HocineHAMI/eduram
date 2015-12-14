@@ -22,6 +22,12 @@ public class Room {
 
     }
 
+    public boolean isNeighboor(Room r1){
+
+        return (neighboorsRooms.contains(r1));
+
+    }
+
 
     public String toString(){
 

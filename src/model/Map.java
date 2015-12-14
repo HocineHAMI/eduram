@@ -9,7 +9,8 @@ public class Map {
     private ArrayList<Building> buildings;
 
     //generate a map with 4 statics buildings
-        public Map(){
+
+    public Map(){
 
             buildings = new ArrayList<Building>();
             buildings.add(new Building(3, 3));
@@ -22,6 +23,11 @@ public class Map {
 
     public String toString(){
         return "I am a map : "+buildings;
+    }
+
+
+    public ArrayList<Building> getBuildings() {
+        return buildings;
     }
 
     public static void main(String[] args){
