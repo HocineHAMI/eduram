@@ -1,0 +1,24 @@
+Eduram :
+Vous incarnez un des rôles nécessaires au bon fonctionnement du réseau de l'UTBM. Votre but est d'éradiquer les virus présent sur les équipements de réseau de l'UTBM. Vous avez à votre disposition des mots de passe nécessaire pour accéder aux équipements des salles. Votre rôles vous procure un compétences spécifiques à utiliser selon votre gré.
+
+Actions :
+- Déplacement :
+	- SSH (Suppr le MDP de là où l'on est -> TP everywhere)
+	- Telnet (Suppr MDP -> TP sur la room avec ce mdp)
+	- Console (cases adjacentes)
+- Echanger un mot de passe avec quelqu'un dans la même room
+- Créer un antivirus avec 3 (plus ?) virus (groupe de virus ?)
+- Enlever 1 virus
+
+Améliorations:
+- Plusieurs type de virus
+- Hacker qui joue contre le joueur
+- Implémentation partie Réseau pour jeu en ligne
+- Portage sur Android
+
+Rapport :
+- Montrer l'atrait  du jeu et le lien avec Pandémie (1/2 pages)
+- Détailler la conception (1 pages)
+- Screen de l'état actuel du jeu
+- Détailler améliorations et expliquer ce que ça implique
+- Conclusion sur les apports bénéfiques du projet
