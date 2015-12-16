@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Building;
 import model.Map;
@@ -18,6 +17,8 @@ public class MapView extends Application {
     private Scene scene;
     private Group root;
 
+    private int windowsSizeX;
+    private int windowsSizeY;
     private Map map;
 
     public MapView(){
@@ -25,7 +26,6 @@ public class MapView extends Application {
     }
     public void launchWindows(){
         launch();
-
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -36,21 +36,16 @@ public class MapView extends Application {
 
     @Override
     public void init() throws Exception{
+        windowsSizeX = 1500;
+        windowsSizeY = 800;
         root = new Group();
-        scene = new Scene(root, 1500, 800, Color.LIGHTYELLOW);
+        scene = new Scene(root, windowsSizeX, windowsSizeY, Color.LIGHTYELLOW);
         int i = 0;
         int j= 0;
         for (Building b : map.getBuildings()){
             i=0;
             for (Room r : b.getRooms()){
-                Circle cercle = new Circle();
-                cercle.setCenterX(100+i*60);
-                cercle.setCenterY(100+j*50);
-                cercle.setRadius(20);
-                cercle.setFill(Color.YELLOW);
-                cercle.setStroke(Color.ORANGE);
-                cercle.setStrokeWidth(5);
-                root.getChildren().add(cercle);
+                root.getChildren().add((new RoomView(windowsSizeX, windowsSizeY, i, j)).getRoom());
                 i++;
             }
             j++;
