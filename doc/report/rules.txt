@@ -1,3 +1,4 @@
+ls
 Eduram :
 Vous incarnez un des rôles nécessaires au bon fonctionnement du réseau de l'UTBM. Votre but est d'éradiquer les virus présent sur les équipements de réseau de l'UTBM. Vous avez à votre disposition des mots de passe nécessaire pour accéder aux équipements des salles. Votre rôles vous procure un compétences spécifiques à utiliser selon votre gré.
 
