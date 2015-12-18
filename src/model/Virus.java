@@ -5,4 +5,20 @@ package model;
  */
 public class Virus {
 
+    private Room position;
+
+    public Virus(Room room){
+        this.position = room;
+    }
+
+    public static void ajouterVirus(Room r){
+
+    }
+
+//TODO
+    public static void propagation(Room room) {
+
+
+
+    }
 }

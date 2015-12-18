@@ -8,9 +8,10 @@ import java.util.ArrayList;
 public class Room {
     private ArrayList<Room> neighboorsRooms;
     private Building building;
+    private ArrayList<Virus> viruses;
 
         public Room(Building building){
-
+            viruses = new ArrayList<Virus>();
             neighboorsRooms = new ArrayList<Room>();
             this.building = building;
 
@@ -26,6 +27,17 @@ public class Room {
 
         return (neighboorsRooms.contains(r1));
 
+    }
+
+    public void infect(Virus virus){
+        if(viruses.size()>=3){
+            System.out.println("PROPAGATION !!! ");
+            Virus.propagation(this);
+        }
+        else{
+            System.out.println("Infection !");
+            viruses.add(virus);
+        }
     }
 
 
