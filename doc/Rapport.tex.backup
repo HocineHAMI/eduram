@@ -152,18 +152,7 @@ Nous avons décidé de réaliser plusieurs diagrammes de séquence pour représe
 
 \section{Améliorations possibles}
 
-En développant ce projet nous avons pensé à plusieurs idées d'améliorations. En effet on pensait pouvoir mettre plusieurs types de virus avec des comportements différents, mais ça posait plusieurs problèmes au niveau équilibrage du jeu
-Et nous aurions passé plus de temps à réfléchir à la façon d'équilibrer les virus plutôt qu'à les implémenter.
-
-Il peut aussi être possible de rajouter un nouveau rôle de joueur qui serait "Hacker" en effet ce nouveau joueur ne jouerait pas en coopération avec les autres joueurs mais bel et bien contre eux et avec "le jeu"
-Cette amélioration aurait été très amusante à mettre en place, mais elle aurait complètement bouleversé le gameplay et nous aurions du revoir une grande partie de l'implantation.
-
-La mise en place du jeu en réseau aurait pu être faisable. En plus grâce à la mise en place du modèle MVC que l'on à fait il n'aurait pas été très compliqué de faire la mise en réseau du jeu. Mais pour faire 
-un jeu en ligne cela nécessitait la création d'un serveur et d'un protocole pour les échanges de données. Le client aurait été complètement modifié dans la mesure ou il aurait simplement envoyé des requêtes TCP au serveur et interprété les résultats reçus pour simplement les afficher.
-Toutes les vérifications doivent se faire coté serveur et le client n'est en fait qu'un afficheur (Si on commence à contrôler des données sensibles dans le client, les joueurs peuvent trop facilement tricher en modifiant le code du client.).
-Cette partie reste, pour nous encore un espoir et sera peut être implémentée car elle nous semble la plus intéressante au niveau programmation. Mais elle nécessite toute fois un gros refactoring de code.
-
-Et enfin nous avions aussi pensé à porter notre jeu pour android. Grâce au modèle MVC, il peut être très simple de créer l'application android. Il nous suffirait seulement de remplacer JavaFX.
+En dévelopa 
 
 
 
