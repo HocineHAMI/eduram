@@ -57,11 +57,14 @@
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Professeur:} \\
-Gechter \textsc{Franck}
+\textsc{Gechter} Franck
 \end{flushright}
 \end{minipage}
 \vfill
-
+\begin{figure}[!h]
+	\includegraphics[width=16cm]{report/illustrCarte.png}
+	
+\end{figure}
 % Bottom of the page
 {\large \today}
 
@@ -75,14 +78,17 @@ Gechter \textsc{Franck}
 \section{Un jeu au règles complexes}
 
 Eduram est un jeu basé sur le célèbre jeu Pandémie (Pandémic en version originale). Le principe du jeu est d'essayer d'empêcher des virus de se propager dans les villes du monde entier. C'est un jeu de coopération ou les 
-joueurs jouent tous dans la même équipe contre le jeu. Les règles du jeux sont plutôt simple, chaque joueur possède des cartes avec des noms de ville et des couleurs car la carte est séparée en plusieurs continents
-et chaque continent possède une couleur. Les joueurs peuvent effectuer 4 actions par tour (se déplacer, créer un vaccin contre 5 cartes de la même couleur, enlever un virus sur la ville ou ils se trouvent actuellement, donner une carte à un ami qui se trouve sur la même ville qu'eux ou encore effectuer une action liée à leur spécialité ).
-En effet chaque joueur possède un rôle qui lui permet de faire des actions différente des autres joueurs ( exemple : le scientifique peut créer un vaccin pour seulement 4 cartes ).
-Le jeu est perdu si il y a eu plus de 8 éclosions, si il n'y a plus de cartes dans la pioche des joueurs, ou si on ne peux plus placer de cubes de virus sur la carte. La partie est gagné lorsque tous les vaccins ont été créés.
+joueurs jouent tous dans la même équipe contre le jeu. 
+Chaque joueur possède des cartes avec des noms de ville et des couleurs car la carte est séparée en plusieurs continents
+et chaque continent possède une couleur. Les joueurs peuvent effectuer 4 actions par tour : se déplacer, créer un vaccin contre 5 cartes de la même couleur, enlever un virus sur la ville ou ils se trouvent actuellement, donner une carte à un ami qui se trouve sur la même ville qu'eux ou encore effectuer une action liée à leur spécialité.
+Chaque joueur possède un rôle qui lui procure une ou plusieurs des actions spéciales ( exemple : le scientifique peut créer un vaccin pour seulement 4 cartes).
+Pour poursuivre son tour le joueur pioche des cartes joueurs qui vont lui permettre de créer les antidotes au virus, de se déplacer ou bien d'utiliser une capacité unique conférée par les cartes spéciales.
+A la fin du tour du joueur, un ensemble de carte sont piochées et engendre le développement d'un virus sur la ville donner par la carte. Cependant lorsque 3 virus sont présents sur cette ville et qu'un quatrième fait son apparition il y a alors une éclosions : chaque ville aux alentours est contaminé par le virus.
+Le jeu est perdu s'il y a eu plus de 8 éclosions, ou bien s'il n'y a plus de cartes dans la pioche des joueurs, ou encore si on ne peux plus placer de cubes de virus sur la carte. A contrario, la partie est gagné lorsque tous les vaccins ont été créés.
 
 \section{Nos choix d'adaptation du jeu}
 
-Nous avons décidé de refaire une version utbohémiene du jeu. Vous incarnez un des rôles nécessaires au bon fonctionnement du réseau de l'UTBM. Votre but est d'éradiquer les virus présent sur les équipements de réseau de l'UTBM. Vous avez à votre disposition les mots de passe nécessaire pour accéder aux équipements des salles. Votre rôles vous procure une compétence spécifiques à utiliser selon votre gré. En effet, nous avons choisi de représenter sur notre carte les bâtiments principaux de l'UTBM avec des salles. Un joueur situé sur une salle peut se déplacer dans les salles adjacentes pour un coût de 1 action.
+Nous avons décidé de refaire une version utbohémiene du jeu. Vous incarnez un des rôles nécessaires au bon fonctionnement du réseau de l'UTBM. Votre but est d'éradiquer les virus présent sur les équipements de réseau de l'UTBM. Vous avez à votre disposition les mots de passe nécessaire pour accéder aux équipements des salles. Votre rôles vous procure une compétence spécifiques à utiliser selon votre gré. En effet, nous avons choisi de représenter sur notre carte les bâtiments principaux de l'UTBM avec des salles. Un joueur situé sur une salle peut se déplacer dans les salles adjacentes pour un coût de 1'action.
 \\Nous avons aussi décidé de remplacer les cartes de joueur par des mots de passes pour coller un peu mieux avec le secteur de l'informatique. Donc les joueurs pourront s'échanger des mots de passe comme les cartes dans le 
 jeu original. Les joueurs pourront aussi créer des anti-virus pour supprimer des virus. La partie sera donc gagnée lorsque tous les anti-virus seront créés. Les conditions de défaites sont les mêmes que dans le pandémie original.
 \subsection{Implantation des rôles de joueurs}
@@ -120,7 +126,7 @@ en anglais de manière à ce que le code puisse être compris par une communaut�
 
 On peut voir dans ce diagramme que le joueur est le seul acteur dans ce jeu et qu'il à le choix de faire plusieurs actions telle que se déplacer, donner un mot de passe, supprimer des virus, créer un anti-virus ou encore effectuer son action de classe (Rôle).
 
-\subsection{diagramme de classes}
+\subsection{Diagramme de classes}
 \begin{figure}[!h]
    \includegraphics[width=16cm]{report/eduramClasses.png}
 \end{figure}
@@ -165,8 +171,15 @@ Cette partie reste, pour nous encore un espoir et sera peut être implémentée 
 
 Et enfin nous avions aussi pensé à porter notre jeu pour android. Grâce au modèle MVC, il peut être très simple de créer l'application android. Il nous suffirait seulement de remplacer JavaFX.
 
+\pagebreak
+\part{L'implémentation}
+Une fois l'étape de conception du projet finalisé, nous avons pu commencer l'implémentation collaborative grâce à Git. Notre objectif de rendre un projet fonctionnel et propre au niveau du code. Dans l'état actuel des choses nous avons une interface graphique affichant un groupe de building contenant des "rooms".
 
+\begin{figure}[!h]
+\includegraphics[width=15cm]{report/screenPlateau.png}
+\end{figure}
 
-
+Il nous reste donc à gérer les interactions avec le joueur et rendre l'interface plus jolie.
+Au final ce projet nous aura permit de découvrir une nouvelle librairie pour interface graphique et d'améliorer notre connaissance de la programmation orientée objet. Il va de soit que le projet va encore beaucoup évoluer d'ici le rendu et nous tiendrons à jour la documentation pour permettre une meilleur compréhension de notre démarche.
 
 \end{document}
