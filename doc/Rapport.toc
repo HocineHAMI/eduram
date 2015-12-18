@@ -1,11 +1,13 @@
 \select@language {french}
+\contentsline {part}{I\hspace {1em}Qu'est-ce que Eduram ?}{2}
 \contentsline {section}{\numberline {1}Un jeu au r\IeC {\`e}gles complexes}{2}
 \contentsline {section}{\numberline {2}Nos choix d'adaptation du jeu}{2}
 \contentsline {subsection}{\numberline {2.1}Implantation des r\IeC {\^o}les de joueurs}{2}
 \contentsline {subsection}{\numberline {2.2}Modes de d\IeC {\'e}placement}{2}
-\contentsline {section}{\numberline {3}Le code}{3}
-\contentsline {section}{\numberline {4}Analyse et conception}{3}
-\contentsline {subsection}{\numberline {4.1}Digramme de cas d'utilisation}{3}
-\contentsline {subsection}{\numberline {4.2}diagramme de classes}{3}
-\contentsline {subsection}{\numberline {4.3}Diagrammes de s\IeC {\'e}quences}{4}
-\contentsline {section}{\numberline {5}Am\IeC {\'e}liorations possibles}{6}
+\contentsline {part}{II\hspace {1em}Choix de conceptions}{4}
+\contentsline {section}{\numberline {3}Le code}{4}
+\contentsline {section}{\numberline {4}Analyse et conception}{4}
+\contentsline {subsection}{\numberline {4.1}Digramme de cas d'utilisation}{4}
+\contentsline {subsection}{\numberline {4.2}diagramme de classes}{4}
+\contentsline {subsection}{\numberline {4.3}Diagrammes de s\IeC {\'e}quences}{5}
+\contentsline {part}{III\hspace {1em}Am\IeC {\'e}liorations possibles}{8}

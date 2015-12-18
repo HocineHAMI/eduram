@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.25)  18 DEC 2015 11:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.25)  18 DEC 2015 12:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,14 +648,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2] <report/usecaseEduram.png, id=22, 868.24374pt x 587.19376pt>
+[2]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3] <report/usecaseEduram.png, id=25, 868.24374pt x 587.19376pt>
 File: report/usecaseEduram.png Graphic file (type png)
 
 <use report/usecaseEduram.png>
 Package pdftex.def Info: report/usecaseEduram.png used on input line 118.
 (pdftex.def)             Requested size: 455.24408pt x 307.8871pt.
 
-<report/eduramClasses.png, id=23, 908.39375pt x 456.70625pt>
+<report/eduramClasses.png, id=26, 908.39375pt x 456.70625pt>
 File: report/eduramClasses.png Graphic file (type png)
 
 <use report/eduramClasses.png>
@@ -671,8 +678,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[3 <./report/usecaseEduram.png (PNG copy)>]
-<report/DiagrameSequenceDebutPartie.png, id=27, 1123.19624pt x 365.365pt>
+[4 <./report/usecaseEduram.png (PNG copy)>]
+<report/DiagrameSequenceDebutPartie.png, id=30, 1123.19624pt x 365.365pt>
 File: report/DiagrameSequenceDebutPartie.png Graphic file (type png)
 
 <use report/DiagrameSequenceDebutPartie.png>
@@ -686,9 +693,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4 <./report/eduramClasses.png (PNG copy)> <./report/DiagrameSequenceDebutParti
+[5 <./report/eduramClasses.png (PNG copy)> <./report/DiagrameSequenceDebutParti
 e.png (PNG copy)>]
-<report/SequenceEruption.png, id=32, 701.62125pt x 605.26125pt>
+<report/SequenceEruption.png, id=35, 701.62125pt x 605.26125pt>
 File: report/SequenceEruption.png Graphic file (type png)
 
 <use report/SequenceEruption.png>
@@ -701,8 +708,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[5 <./report/SequenceEruption.png>]
-<report/SequenceTourJoueur.png, id=38, 687.56876pt x 625.33624pt>
+[6 <./report/SequenceEruption.png>]
+<report/SequenceTourJoueur.png, id=42, 687.56876pt x 625.33624pt>
 File: report/SequenceTourJoueur.png Graphic file (type png)
 
 <use report/SequenceTourJoueur.png>
@@ -715,7 +722,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6 <./report/SequenceTourJoueur.png>] 
+[7 <./report/SequenceTourJoueur.png>] 
 AED: lastpage setting LastPage
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -723,7 +730,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7] (./Rapport.aux) ) 
+[8] (./Rapport.aux) ) 
 Here is how much of TeX's memory you used:
  5915 strings out of 493054
  78464 string characters out of 6140585
@@ -742,10 +749,10 @@ c1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr
 st/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/
 public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
 /sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on Rapport.pdf (8 pages, 248209 bytes).
+Output written on Rapport.pdf (9 pages, 252271 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 87 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
