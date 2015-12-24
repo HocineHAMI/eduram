@@ -44,7 +44,7 @@ public class MapView extends Application {
         int j= 0;
         for (Building b : map.getBuildings()){
             i=0;
-            root.getChildren().add((new BuildingView(j).getBuilding()));
+            root.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
             for (Room r : b.getRooms()){
                 root.getChildren().add((new RoomView(windowsSizeX, windowsSizeY, i, j)).getRoom());
                 i++;

@@ -9,10 +9,10 @@ import javafx.scene.shape.Rectangle;
 public class BuildingView {
     private Rectangle building;
 
-    public BuildingView(int j){
+    public BuildingView(int x, int y){
         building = new Rectangle(100,100);
-        building.setX(100+j*60);
-        building.setY(100+j*50);
+        building.setX(x);
+        building.setY(y);
 
         building.setFill(Color.ORANGE);
         building.setStroke(Color.GOLD);
