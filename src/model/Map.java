@@ -13,10 +13,10 @@ public class Map {
     public Map(){
 
             buildings = new ArrayList<Building>();
-            buildings.add(new Building(3,3));
-            buildings.add(new Building(6,3));
-            buildings.add(new Building(3,5));
-            buildings.add(new Building(3,4));
+            buildings.add(new Building(3,3,100,100));
+            buildings.add(new Building(6,3,200,100));
+            buildings.add(new Building(3,5,300,100));
+            buildings.add(new Building(3,4,400,100));
 
 
         }

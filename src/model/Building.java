@@ -8,13 +8,17 @@ import java.util.ArrayList;
 public class Building
 {
     private ArrayList<Room> rooms;
+    private int positionX;
+    private int positionY;
 
-    public Building(int width, int height)
+    public Building(int width, int height, int x, int y)
     {
         rooms = new ArrayList<Room>();
         //create a tmp array in order to search neighbours easyer
         Room[][] roomsTmp;
         roomsTmp = new Room[height][width];
+        positionX = x;
+        positionY = y;
 
         //create all rooms in the building
         for (int i = 0; i < height; i++)
@@ -77,10 +81,12 @@ public class Building
     public ArrayList<Room> getRooms() {
         return rooms;
     }
+    public int getPositionX() { return positionX; }
+    public int getPositionY() { return positionY; }
 
     public static void main(String[] args){
 
-        Building b = new Building(5,3);
+        Building b = new Building(5,3,99,99);
         System.out.println(b);
 
 

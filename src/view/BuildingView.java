@@ -13,7 +13,8 @@ public class BuildingView {
         building = new Rectangle(100,100);
         building.setX(x);
         building.setY(y);
-
+        building.setArcHeight(5);
+        building.setArcWidth(5);
         building.setFill(Color.ORANGE);
         building.setStroke(Color.GOLD);
         building.setStrokeWidth(5);

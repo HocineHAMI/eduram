@@ -14,8 +14,8 @@ public class RoomView {
         room.setCenterX(100+i*60);
         room.setCenterY(100+j*50);
         room.setRadius(20);
-        room.setFill(Color.YELLOW);
-        room.setStroke(Color.ORANGE);
+        room.setFill(Color.BLUE);
+        room.setStroke(Color.SKYBLUE);
         room.setStrokeWidth(5);
     }
 
