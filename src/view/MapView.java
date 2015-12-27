@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import model.Building;
 import model.Map;
 import model.Room;
+import model.Virus;
 
 /**
  * Created by victor on 11/12/15.
@@ -43,21 +44,23 @@ public class MapView extends Application {
         scene = new Scene(root, windowsSizeX, windowsSizeY, Color.LIGHTYELLOW);
         int prevPositionX = 100;
         int prevPositionY = 100;
-        int i = 0;
-        int j= 0;
+
         for (Building b : map.getBuildings()){
-            i=0;
             root.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
             prevPositionX = b.getPositionX()-60;
             prevPositionY = b.getPositionY()+30;
             for (Room r : b.getRooms()){
                 RoomView tmpRoomView = (new RoomView(prevPositionX, prevPositionY, b.getPositionX(), b.getPositionY()));
                 root.getChildren().add(tmpRoomView.getRoom());
+
                 prevPositionX = tmpRoomView.getPositionX();
                 prevPositionY = tmpRoomView.getPositionY();
-                i++;
+
+                for (Virus v : r.getViruses()){
+                    root.getChildren().add(new VirusView(r.getViruses().size(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
+
+                }
             }
-            j++;
         }
     }
 }
