@@ -3,6 +3,7 @@ package view;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Building;
@@ -40,13 +41,20 @@ public class MapView extends Application {
         windowsSizeY = 800;
         root = new Group();
         scene = new Scene(root, windowsSizeX, windowsSizeY, Color.LIGHTYELLOW);
+        int prevPositionX = 100;
+        int prevPositionY = 100;
         int i = 0;
         int j= 0;
         for (Building b : map.getBuildings()){
             i=0;
             root.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
+            prevPositionX = b.getPositionX()-60;
+            prevPositionY = b.getPositionY()+30;
             for (Room r : b.getRooms()){
-                root.getChildren().add((new RoomView(windowsSizeX, windowsSizeY, i, j)).getRoom());
+                RoomView tmpRoomView = (new RoomView(prevPositionX, prevPositionY, b.getPositionX(), b.getPositionY()));
+                root.getChildren().add(tmpRoomView.getRoom());
+                prevPositionX = tmpRoomView.getPositionX();
+                prevPositionY = tmpRoomView.getPositionY();
                 i++;
             }
             j++;
