@@ -9,13 +9,16 @@ public class Room {
     private ArrayList<Room> neighboorsRooms;
     private Building building;
     private ArrayList<Virus> viruses;
+    private int positionX;
+    private int positionY;
 
-        public Room(Building building){
-            viruses = new ArrayList<Virus>();
-            neighboorsRooms = new ArrayList<Room>();
-            this.building = building;
-
-        }
+    public Room(Building building, int i, int j){
+        viruses = new ArrayList<Virus>();
+        neighboorsRooms = new ArrayList<Room>();
+        this.building = building;
+        positionX = building.getPositionX() + i +50;
+        positionY = building.getPositionY() + j +50;
+    }
 
     public void addNeighboor(Room room){
 
@@ -45,5 +48,15 @@ public class Room {
 
         return "# I am a room and I've : #"+neighboorsRooms.size()+" neighboors\n";
 
+    }
+    public ArrayList<Virus> getViruses(){ return viruses;}
+    public ArrayList<Room> getNeighboorsRooms(){ return neighboorsRooms;}
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
     }
 }

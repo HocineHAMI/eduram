@@ -16,7 +16,7 @@ public class RoomView {
         room.setFitHeight(60);
         room.setFitWidth(70);
 
-        positionX = prevPositionX+90;
+        positionX = prevPositionX;
         positionY = prevPositionY;
 
         //Test to know if equipments are in the building

@@ -8,13 +8,14 @@ import java.util.ArrayList;
 public class Building
 {
     private ArrayList<Room> rooms;
+    private Room roomsTmp;
     private int positionX;
     private int positionY;
 
     public Building(int width, int height, int x, int y)
     {
         rooms = new ArrayList<Room>();
-        //create a tmp array in order to search neighbours easyer
+        //create a tmp array in order to search neighbours easier
         Room[][] roomsTmp;
         roomsTmp = new Room[height][width];
         positionX = x;
@@ -25,7 +26,7 @@ public class Building
         {
             for (int j = 0; j < width; j++)
             {
-                rooms.add(new Room(this));
+                rooms.add(new Room(this, i*80, j*90));
                 roomsTmp[i][j] = rooms.get(rooms.size()-1);
             }
         }
@@ -81,6 +82,7 @@ public class Building
     public ArrayList<Room> getRooms() {
         return rooms;
     }
+    public Room getRoomsTmp() {return roomsTmp;}
     public int getPositionX() { return positionX; }
     public int getPositionY() { return positionY; }
 
