@@ -14,9 +14,9 @@ public class Map {
 
             buildings = new ArrayList<Building>();
             buildings.add(new Building(3,2,50,80));
-            buildings.add(new Building(5,2,400,80));
-            buildings.add(new Building(4,2,750,80));
-            buildings.add(new Building(3,2,1100,80));
+            buildings.add(new Building(5,2,330,80));
+            buildings.add(new Building(4,2,610,80));
+            buildings.add(new Building(3,2,890,80));
 
 
         }

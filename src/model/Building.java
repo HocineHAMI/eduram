@@ -26,7 +26,7 @@ public class Building
         {
             for (int j = 0; j < width; j++)
             {
-                rooms.add(new Room(this, i*80, j*90));
+                rooms.add(new Room(this, i*130, j*90));
                 roomsTmp[i][j] = rooms.get(rooms.size()-1);
             }
         }

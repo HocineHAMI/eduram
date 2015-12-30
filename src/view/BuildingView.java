@@ -10,7 +10,7 @@ public class BuildingView {
     private Rectangle building;
 
     public BuildingView(int x, int y){
-        building = new Rectangle(300,500);
+        building = new Rectangle(250,500);
         building.setX(x);
         building.setY(y);
         building.setArcHeight(5);

@@ -16,8 +16,8 @@ public class Room {
         viruses = new ArrayList<Virus>();
         neighboorsRooms = new ArrayList<Room>();
         this.building = building;
-        positionX = building.getPositionX() + i +50;
-        positionY = building.getPositionY() + j +50;
+        positionX = building.getPositionX() + i +30;
+        positionY = building.getPositionY() + j +30;
     }
 
     public void addNeighboor(Room room){
