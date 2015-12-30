@@ -12,13 +12,15 @@ public class Virus {
     }
 
     public static void ajouterVirus(Room r){
-
+        r.infect(new Virus(r));;
     }
 
 //TODO
     public static void propagation(Room room) {
 
-
+        for (int i = 0; i < room.getNeighboorsRooms().size(); i++) {
+            room.getNeighboorsRooms().get(i).infect(new Virus(room.getNeighboorsRooms().get(i)));
+        }
 
     }
 }
