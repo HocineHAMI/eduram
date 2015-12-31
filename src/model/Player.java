@@ -28,6 +28,7 @@ public /*abstract*/ class Player {
 
     }
 
+    public ArrayList<Password> getListPassword(){ return passwords;}
     public static void main(String[] args){
         Map m = new Map();
         Player p1 = new Player(m.getBuildings().get(1).getRooms().get(1));

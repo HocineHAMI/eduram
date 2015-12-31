@@ -8,16 +8,13 @@ import javafx.scene.image.ImageView;
  */
 public class RoomView {
     private ImageView room;
-    private int positionX;
-    private int positionY;
 
-    public RoomView(int prevPositionX, int prevPositionY, int buildingPositionX, int buildingPositionY){
+
+    public RoomView(int positionX, int positionY, int buildingPositionX, int buildingPositionY){
         room = new ImageView(new Image("file:img/cisco-router-icon.png"));
         room.setFitHeight(60);
         room.setFitWidth(70);
 
-        positionX = prevPositionX;
-        positionY = prevPositionY;
 
         //Test to know if equipments are in the building
         if (positionX >= buildingPositionX+250){
@@ -32,6 +29,6 @@ public class RoomView {
     public ImageView getRoom(){
         return room;
     }
-    public int getPositionX() { return positionX;}
-    public int getPositionY() { return positionY;}
+    public int getPositionX() { return (int)room.getX();}
+    public int getPositionY() { return (int)room.getY();}
 }
