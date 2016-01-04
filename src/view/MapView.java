@@ -1,6 +1,8 @@
 package view;
 
+import controller.MoveControler;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import model.*;
+
+import javafx.event.ActionEvent;
 
 /**
  * Created by victor on 11/12/15.
@@ -24,6 +28,7 @@ public class MapView extends Application {
     private int windowsSizeX, windowsSizeY;
     private Map map;
     private Player player;
+    private Room selectedRoom;
 
     public MapView(){
         map = new Map();
@@ -46,7 +51,13 @@ public class MapView extends Application {
         windowsSizeY = 800;
 
         buttonInfection = new Button("Infection");
-        buttonAction1 = new Button("Action1");
+        buttonMove = new Button("Move");
+        buttonMove.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MoveControler.move(player, se);
+            }
+        });
         buttonAction2 = new Button("Action2");
         buttonAction3 = new Button("Action3");
         buttonAction4 = new Button("Action4");
@@ -57,7 +68,7 @@ public class MapView extends Application {
         gameViewGroup.setStyle("-fx-background-color: DAE6F3;");
         commandPanelViewGroup = new FlowPane();
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonInfection, buttonAction1, buttonAction2, buttonAction3, buttonAction4);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
