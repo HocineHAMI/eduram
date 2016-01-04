@@ -18,8 +18,8 @@ public class Virus {
 //TODO
     public static void propagation(Room room) {
 
-        for (int i = 0; i < room.getNeighboorsRooms().size(); i++) {
-            room.getNeighboorsRooms().get(i).infect(new Virus(room.getNeighboorsRooms().get(i)));
+        for (int i = 0; i < room.getNeighborsRooms().size(); i++) {
+            room.getNeighborsRooms().get(i).infect(new Virus(room.getNeighborsRooms().get(i)));
         }
 
     }

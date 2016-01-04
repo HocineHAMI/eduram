@@ -1,12 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by victor on 08/12/15.
  */
 public class Room {
-    private ArrayList<Room> neighboorsRooms;
+    private ArrayList<Room> neighborsRooms;
     private Building building;
     private ArrayList<Virus> viruses;
     private int positionX;
@@ -14,21 +15,32 @@ public class Room {
 
     public Room(Building building, int i, int j){
         viruses = new ArrayList<Virus>();
-        neighboorsRooms = new ArrayList<Room>();
+        neighborsRooms = new ArrayList<Room>();
         this.building = building;
         positionX = building.getPositionX() + i +30;
         positionY = building.getPositionY() + j +30;
     }
 
-    public void addNeighboor(Room room){
+    public void addNeighbor(Room room){
 
-        this.neighboorsRooms.add(room);
+        this.neighborsRooms.add(room);
 
     }
+    public void deleteNeighbors()
+    {
+        Random randomGenerator = new Random();
+        int index = randomGenerator.nextInt(neighborsRooms.size());
+        Room r = neighborsRooms.get(index);
+        if(this.neighborsRooms.size()>2 && r.neighborsRooms.size()>2)
+        {
+            this.neighborsRooms.remove(r);
+            r.neighborsRooms.remove(this);
+        }
+    }
 
-    public boolean isNeighboor(Room r1){
+    public boolean isNeighbor(Room r1){
 
-        return (neighboorsRooms.contains(r1));
+        return (neighborsRooms.contains(r1));
 
     }
 
@@ -46,11 +58,11 @@ public class Room {
 
     public String toString(){
 
-        return "# I am a room and I've : #"+neighboorsRooms.size()+" neighboors\n";
+        return "# I am a room and I've : #"+ neighborsRooms.size()+" neighboors\n";
 
     }
     public ArrayList<Virus> getViruses(){ return viruses;}
-    public ArrayList<Room> getNeighboorsRooms(){ return neighboorsRooms;}
+    public ArrayList<Room> getNeighborsRooms(){ return neighborsRooms;}
 
     public int getPositionX() {
         return positionX;

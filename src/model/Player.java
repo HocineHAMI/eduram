@@ -16,7 +16,7 @@ public /*abstract*/ class Player {
 
     public void move(Room next){
 
-        if(this.position.isNeighboor(next)){
+        if(this.position.isNeighbor(next)){
             this.position = next;
 
             System.out.println("Deplacement Terminé !");

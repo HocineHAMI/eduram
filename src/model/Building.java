@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by victor on 08/12/15.
@@ -37,40 +38,62 @@ public class Building
             for (int j = 0; j < width; j++)
             {
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i - 1][j - 1]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i - 1][j - 1]);
                 }
                 catch(ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i - 1][j]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i - 1][j]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i-1][j+1]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i - 1][j + 1]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i][j-1]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i][j - 1]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i][j+1]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i][j + 1]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i+1][j-1]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i + 1][j - 1]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i+1][j]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i + 1][j]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
                 try {
-                    roomsTmp[i][j].addNeighboor(roomsTmp[i+1][j+1]);
+                    roomsTmp[i][j].addNeighbor(roomsTmp[i + 1][j + 1]);
                 }
                 catch (ArrayIndexOutOfBoundsException e){};
             }
         }
 
+    }
+
+    public void link(Building b){
+
+        Random randomGenerator = new Random();
+        int index = randomGenerator.nextInt(rooms.size());
+        Room r1 = rooms.get(index);
+        index = randomGenerator.nextInt(b.rooms.size());
+        Room r2 = b.rooms.get(index);
+        r1.addNeighbor(r2);
+        r2.addNeighbor(r1);
+
+    }
+    public void deleteLinks()
+    {
+
+        for (int i = 0; i < rooms.size(); i++) {
+            Random randomGenerator = new Random();
+            int index = randomGenerator.nextInt(rooms.size());
+            Room r1 = rooms.get(index);
+            r1.deleteNeighbors();
+        }
     }
 
     public String toString(){

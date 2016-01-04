@@ -2,16 +2,11 @@ package view;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
-import javafx.geometry.Orientation;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import model.*;
@@ -33,6 +28,7 @@ public class MapView extends Application {
     public MapView(){
         map = new Map();
     }
+
     public void launchWindows(){
         launch();
     }
@@ -80,7 +76,7 @@ public class MapView extends Application {
                 RoomView tmpRoomView = (new RoomView(r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
 
-                for (Room nr : r.getNeighboorsRooms()){
+                for (Room nr : r.getNeighborsRooms()){
 
                     gameViewGroup.getChildren().add(new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50));
                 }
