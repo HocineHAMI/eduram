@@ -2,6 +2,8 @@ package view;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.Virus;
+import model.VirusType;
 
 import java.util.Random;
 
@@ -11,24 +13,31 @@ import java.util.Random;
 public class VirusView {
     private ImageView virus;
 
-    public VirusView(int nbrViruses, int positionX, int positionY){
-        switch (nbrViruses){
-            case 1:
+    public VirusView(VirusType type, int positionX, int positionY){
+        switch (type){
+            case GREEN:
                 virus = new ImageView(new Image("file:img/greenVirus.png"));
                 virus.setFitWidth(50);
                 virus.setFitHeight(50);
                 virus.setX(positionX);
                 virus.setY(positionY);
                 break;
-            case 2:
+            case GOLD:
                 virus = new ImageView(new Image("file:img/goldVirus.png"));
                 virus.setFitWidth(50);
                 virus.setFitHeight(30);
                 virus.setX(positionX);
                 virus.setY(positionY);
                 break;
-            case 3:
+            case RED:
                 virus = new ImageView(new Image("file:img/redVirus.png"));
+                virus.setFitWidth(60);
+                virus.setFitHeight(40);
+                virus.setX(positionX);
+                virus.setY(positionY);
+                break;
+            case BLUE:
+                virus = new ImageView(new Image("file:img/blueVirus.png"));
                 virus.setFitWidth(60);
                 virus.setFitHeight(40);
                 virus.setX(positionX);
