@@ -24,7 +24,7 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
-    private Button buttonInfection, buttonAction1, buttonAction2, buttonAction3, buttonAction4;
+    private Button buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4;
     private int windowsSizeX, windowsSizeY;
     private Map map;
     private Player player;
@@ -55,7 +55,7 @@ public class MapView extends Application {
         buttonMove.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MoveControler.move(player, se);
+                MoveControler.move(player, selectedRoom);
             }
         });
         buttonAction2 = new Button("Action2");

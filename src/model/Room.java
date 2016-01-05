@@ -47,7 +47,7 @@ public class Room {
     public void infect(Virus virus){
         if(viruses.size()>=3){
             System.out.println("PROPAGATION !!! ");
-            Virus.propagation(this);
+            Virus.propagation(this, this.getViruses().get(0));
         }
         else{
             System.out.println("Infection !");

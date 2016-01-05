@@ -18,9 +18,9 @@ public class Virus {
         r.infect(new Virus(r, type));
     }
 
-    public static void propagation(Room room) {
+    public static void propagation(Room room, Virus v) {
         for (int i = 0; i < room.getNeighborsRooms().size(); i++) {
-            room.getNeighborsRooms().get(i).infect(new Virus(room.getNeighborsRooms().get(i), VirusType.BLUE));
+            room.getNeighborsRooms().get(i).infect(new Virus(room.getNeighborsRooms().get(i), v.type));
         }
 
     }
