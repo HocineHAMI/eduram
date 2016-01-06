@@ -1,5 +1,6 @@
 package view;
 
+import com.sun.org.apache.xml.internal.serializer.utils.SystemIDResolver;
 import controller.MoveControler;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -28,9 +29,13 @@ public class MapView extends Application {
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
+    private Map map;
+    private Player player;
 
-    public MapView(Game g){
-        this.game=g;
+    public MapView(){
+        super();
+        this.game=new Game(3);
+
     }
 
     public void launchWindows(){
