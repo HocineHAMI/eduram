@@ -29,12 +29,10 @@ public class MapView extends Application {
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
-    private Map map;
-    private Player player;
 
     public MapView(){
         super();
-        this.game=new Game(3);
+        this.game = new Game(3);
 
     }
 
@@ -113,4 +111,7 @@ public class MapView extends Application {
         }
     }
 
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }
