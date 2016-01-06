@@ -59,7 +59,6 @@ public class MapView extends Application {
             public void handle(ActionEvent event) {
                 MoveControler.move(game.getCurrentPlayer(), selectedRoom);
                 System.out.println("test : "+selectedRoom);
-
             }
         });
         buttonAction2 = new Button("Action2");
