@@ -36,7 +36,6 @@ public /*abstract*/ class Player {
         if(r.getViruses().size()!=0)
         {
             r.delVirus();
-            nbActions++;
             return true;
         }
         return false;
