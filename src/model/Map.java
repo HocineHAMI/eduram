@@ -25,7 +25,7 @@ public class Map {
 
         }
 
-    public void linkBuildings(){
+    private void linkBuildings(){
 
         buildings.get(0).link(buildings.get(1));
         buildings.get(1).link(buildings.get(2));

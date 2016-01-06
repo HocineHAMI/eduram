@@ -26,12 +26,11 @@ public class MapView extends Application {
     private VBox passwordBox;
     private Button buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4;
     private int windowsSizeX, windowsSizeY;
-    private Map map;
-    private Player player;
+    private Game game;
     private Room selectedRoom;
 
-    public MapView(){
-        map = new Map();
+    public MapView(Game g){
+        this.game=g;
     }
 
     public void launchWindows(){
@@ -55,7 +54,7 @@ public class MapView extends Application {
         buttonMove.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MoveControler.move(player, selectedRoom);
+                MoveControler.move(game.getCurrentPlayer(), selectedRoom);
             }
         });
         buttonAction2 = new Button("Action2");
@@ -79,8 +78,17 @@ public class MapView extends Application {
         AnchorPane.setRightAnchor(commandPanelViewGroup, 5.0);
         windowsScene = new Scene(windowsGroup, windowsSizeX, windowsSizeY, Color.BLACK);
 
+        /*for (Password pwd : player.getListPassword()){
+            passwordBox.getChildren().add();
+        }
+        commandPanelViewGroup.getChildren().add(passwordBox);*/
+        draw();
 
-        for (Building b : map.getBuildings()){
+    }
+
+    public void draw()
+    {
+        for (Building b : this.game.getMap().getBuildings()){
             gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
 
             for (Room r : b.getRooms()){
@@ -98,12 +106,6 @@ public class MapView extends Application {
                 }
             }
         }
-        player = new Player(map.getBuildings().get(2).getRoomsTmp());
-        /*for (Password pwd : player.getListPassword()){
-            passwordBox.getChildren().add();
-        }
-        commandPanelViewGroup.getChildren().add(passwordBox);*/
-
-
     }
+
 }
