@@ -12,16 +12,17 @@ import model.Room;
 public class RoomView {
     private ImageView room;
     private Room currentRoom;
-    private Room selectedRoom;
+    private MapView mapView;
 
-    public RoomView(Room r, Room slctRoom, int positionX, int positionY, int buildingPositionX, int buildingPositionY){
+    public RoomView(Room r, MapView slctRoom, int positionX, int positionY, int buildingPositionX, int buildingPositionY){
         currentRoom = r;
-        selectedRoom = slctRoom;
+        mapView = slctRoom;
         room = new ImageView(new Image("file:img/cisco-router-icon.png"));
         room.setOnMouseClicked(new EventHandler<MouseEvent>() {
                @Override
                public void handle(MouseEvent event) {
-                   selectedRoom = currentRoom;
+                   mapView.setSelectedRoom(currentRoom);
+                   System.out.println("test : "+currentRoom);
                }
            });
         room.setFitHeight(60);

@@ -58,6 +58,8 @@ public class MapView extends Application {
             @Override
             public void handle(ActionEvent event) {
                 MoveControler.move(game.getCurrentPlayer(), selectedRoom);
+                System.out.println("test : "+selectedRoom);
+
             }
         });
         buttonAction2 = new Button("Action2");
@@ -95,7 +97,7 @@ public class MapView extends Application {
             gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
 
             for (Room r : b.getRooms()){
-                RoomView tmpRoomView = (new RoomView(r, selectedRoom,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
+                RoomView tmpRoomView = (new RoomView(r, this,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
                 /*r.infect(new Virus(r, VirusType.GOLD));
                 r.infect(new Virus(r, VirusType.RED));*/
@@ -113,5 +115,9 @@ public class MapView extends Application {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public void setSelectedRoom(Room selectedRoom) {
+        this.selectedRoom = selectedRoom;
     }
 }
