@@ -1,3 +1,5 @@
+import view.MapView;
+
 /**
  * Created by victor on 15/12/15.
  */

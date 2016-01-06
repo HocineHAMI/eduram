@@ -127,7 +127,7 @@ public class MapView extends Application {
         gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
 
         //ADELETE -->
-        ArrayList<Password> tmpPasswords = new ArrayList<>();
+        ArrayList<Password> tmpPasswords = new ArrayList<Password>();
         tmpPasswords.add(new Password("TESSFsmsdl3424"));
         tmpPasswords.add(new Password("TESSFsmsdl3424"));
         tmpPasswords.add(new Password("13245675432"));
