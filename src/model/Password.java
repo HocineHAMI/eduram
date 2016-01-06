@@ -6,4 +6,10 @@ package model;
 public class Password {
     private String pass;
     private Room bond;
+
+    public Password(String password){
+        pass = password;
+    }
+
+    public String getPassword(){return pass;}
 }
