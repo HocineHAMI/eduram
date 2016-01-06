@@ -41,7 +41,7 @@ public class Game {
 
     public Player getCurrentPlayer()
     {
-        return(players.get(nbPlayers%nbTours));
+        return(players.get(0));
     }
 
 
