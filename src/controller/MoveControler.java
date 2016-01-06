@@ -9,12 +9,14 @@ import model.Room;
  */
 public class MoveControler {
 
-    public static boolean move(Game p, Room r){
-        if(p.getCurrentPlayer().move(r))
+    public static boolean move(Game game, Room r){
+        if(game.getCurrentPlayer().move(r))
         {
-            p.getCurrentPlayer().setNbActions(p.getCurrentPlayer().getNbActions()+1);
-            if(p.getCurrentPlayer().getNbActions()==4)
-                p.nextTurn();
+            game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
+            if(game.getCurrentPlayer().getNbActions()==4) {
+                game.getCurrentPlayer().setNbActions(0);
+                game.nextTurn();
+            }
             return true;
         }
 

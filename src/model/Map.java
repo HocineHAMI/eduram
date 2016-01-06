@@ -13,10 +13,10 @@ public class Map {
     public Map(){
 
             buildings = new ArrayList<Building>();
-            buildings.add(new Building(3,2,50,80));
-            buildings.add(new Building(5,2,330,80));
-            buildings.add(new Building(4,2,610,80));
-            buildings.add(new Building(3,2,890,80));
+            buildings.add(new Building(3,2,50,80,VirusType.GREEN));
+            buildings.add(new Building(5,2,330,80,VirusType.BLUE));
+            buildings.add(new Building(4,2,610,80,VirusType.RED));
+            buildings.add(new Building(3,2,890,80,VirusType.GOLD));
         for (int i = 0; i < buildings.size(); i++) {
             buildings.get(i).deleteLinks();
         }

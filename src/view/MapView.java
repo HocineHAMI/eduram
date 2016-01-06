@@ -113,8 +113,8 @@ public class MapView extends Application {
             }
         }
         for (int i = 0; i < game.getNbPlayers(); i++) {
-            gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
-            game.nextTurn();
+            Player p = game.getPlayers().get(i);
+            gameViewGroup.getChildren().add(new PlayerView(p).getPlayer());
         }
 
     }
