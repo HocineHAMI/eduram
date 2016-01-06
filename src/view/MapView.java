@@ -97,7 +97,7 @@ public class MapView extends Application {
             gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
 
             for (Room r : b.getRooms()){
-                RoomView tmpRoomView = (new RoomView(r, this,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
+                RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
                 /*r.infect(new Virus(r, VirusType.GOLD));
                 r.infect(new Virus(r, VirusType.RED));*/
@@ -109,8 +109,11 @@ public class MapView extends Application {
                     gameViewGroup.getChildren().add(new VirusView(v.getVirusType(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
 
                 }
+
             }
         }
+
+        gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
     }
 
     public void setGame(Game game) {
