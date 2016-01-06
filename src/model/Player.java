@@ -8,23 +8,26 @@ import java.util.ArrayList;
 public /*abstract*/ class Player {
     private Room position;
     private ArrayList<Password> passwords;
+    private int nbActions=0;
 
 
     public Player(Room position){
         this.position = position;
     }
 
-    public void move(Room next){
+    public boolean move(Room next){
 
         if(this.position.isNeighbor(next)){
             this.position = next;
 
             System.out.println("Deplacement Terminé !");
+            return true;
         }
         else{
             System.out.println("we can't move here !");
 
         }
+        return false;
 
     }
 
@@ -38,4 +41,11 @@ public /*abstract*/ class Player {
 
     }
 
+    public int getNbActions() {
+        return nbActions;
+    }
+
+    public void setNbActions(int nbActions) {
+        this.nbActions = nbActions;
+    }
 }

@@ -57,8 +57,9 @@ public class MapView extends Application {
         buttonMove.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MoveControler.move(game.getCurrentPlayer(), selectedRoom);
+                MoveControler.move(game, selectedRoom);
                 System.out.println("test : "+selectedRoom);
+                draw();
             }
         });
         buttonAction2 = new Button("Action2");
@@ -111,8 +112,11 @@ public class MapView extends Application {
 
             }
         }
+        for (int i = 0; i < game.getNbPlayers(); i++) {
+            gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
+            game.nextTurn();
+        }
 
-        gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
     }
 
     public void setGame(Game game) {

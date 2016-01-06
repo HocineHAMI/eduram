@@ -1,5 +1,6 @@
 package controller;
 
+import model.Game;
 import model.Player;
 import model.Room;
 
@@ -8,8 +9,16 @@ import model.Room;
  */
 public class MoveControler {
 
-    public static void move(Player p, Room r){
-        p.move(r);
+    public static boolean move(Game p, Room r){
+        if(p.getCurrentPlayer().move(r))
+        {
+            p.getCurrentPlayer().setNbActions(p.getCurrentPlayer().getNbActions()+1);
+            if(p.getCurrentPlayer().getNbActions()==4)
+                p.nextTurn();
+            return true;
+        }
+
+        return false;
 
 
     }
