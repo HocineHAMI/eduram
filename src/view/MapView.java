@@ -95,10 +95,10 @@ public class MapView extends Application {
             gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
 
             for (Room r : b.getRooms()){
-                RoomView tmpRoomView = (new RoomView(r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
+                RoomView tmpRoomView = (new RoomView(r, selectedRoom,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
-                r.infect(new Virus(r, VirusType.GOLD));
-                r.infect(new Virus(r, VirusType.RED));
+                /*r.infect(new Virus(r, VirusType.GOLD));
+                r.infect(new Virus(r, VirusType.RED));*/
 
                 for (Room nr : r.getNeighborsRooms()){
                     gameViewGroup.getChildren().add(new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50));
