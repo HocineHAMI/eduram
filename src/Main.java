@@ -1,3 +1,4 @@
+import model.Game;
 import view.MapView;
 
 /**
@@ -5,7 +6,8 @@ import view.MapView;
  */
 public class Main {
     public static void main (String[] args) throws Exception {
-        MapView test = new MapView();
+        Game game = new Game(3);
+        MapView test = new MapView(game);
         test.launchWindows();
     }
 }
