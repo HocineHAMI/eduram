@@ -1,6 +1,6 @@
 package view;
 
-import com.sun.org.apache.xml.internal.serializer.utils.SystemIDResolver;
+import controller.DeleteVirusControler;
 import controller.MoveControler;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -28,7 +28,7 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
-    private Button buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4;
+    private Button buttonDeleteVirus, buttonMove, buttonAction2, buttonAction3, buttonAction4;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -55,7 +55,16 @@ public class MapView extends Application {
         windowsSizeX = 1500;
         windowsSizeY = 800;
 
-        buttonInfection = new Button("Infection");
+        buttonDeleteVirus = new Button("DeleteVirus");
+        buttonDeleteVirus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DeleteVirusControler.deleteVirus(game, selectedRoom);
+                System.out.println("supression de virus !! : ");
+                draw();
+            }
+        });
+
         buttonMove = new Button("Move");
         buttonMove.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -78,7 +87,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(30);
         ((FlowPane) commandPanelViewGroup).setHgap(30);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4, passwordBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonAction2, buttonAction3, buttonAction4, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
