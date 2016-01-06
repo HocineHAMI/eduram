@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 import model.*;
 
 import javafx.event.ActionEvent;
+
+import java.util.ArrayList;
 
 /**
  * Created by victor on 11/12/15.
@@ -71,8 +74,11 @@ public class MapView extends Application {
         gameViewGroup = new AnchorPane();
         gameViewGroup.setStyle("-fx-background-color: DAE6F3;");
         commandPanelViewGroup = new FlowPane();
+        commandPanelViewGroup.setPadding(new Insets(10, 5, 10, 5));
+        ((FlowPane) commandPanelViewGroup).setVgap(30);
+        ((FlowPane) commandPanelViewGroup).setHgap(30);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonInfection, buttonMove, buttonAction2, buttonAction3, buttonAction4, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
@@ -112,8 +118,23 @@ public class MapView extends Application {
 
             }
         }
-
+        //Display Player
         gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
+
+        //ADELETE -->
+        ArrayList<Password> tmpPasswords = new ArrayList<>();
+        tmpPasswords.add(new Password("TESSFsmsdl3424"));
+        tmpPasswords.add(new Password("TESSFsmsdl3424"));
+        tmpPasswords.add(new Password("13245675432"));
+        tmpPasswords.add(new Password("rejkertj"));
+        tmpPasswords.add(new Password("TESSFsmsdl3424"));
+        tmpPasswords.add(new Password("TESSFsmsdl3424"));
+        tmpPasswords.add(new Password("345353636"));
+        //  <--
+        //Display password
+        for (Password p : /*game.getCurrentPlayer().getListPassword()*/ tmpPasswords){
+            passwordBox.getChildren().add(new Hyperlink(p.getPassword()));
+        }
     }
 
     public void setGame(Game game) {
