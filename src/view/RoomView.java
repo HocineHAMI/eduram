@@ -1,9 +1,12 @@
 package view;
 
 import javafx.event.EventHandler;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import model.Room;
 
 /**
@@ -22,6 +25,7 @@ public class RoomView {
                @Override
                public void handle(MouseEvent event) {
                    mapView.setSelectedRoom(currentRoom);
+                   room.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
                    System.out.println("test : "+currentRoom);
                }
            });
@@ -42,6 +46,7 @@ public class RoomView {
     public ImageView getRoom(){
         return room;
     }
+
     public int getPositionX() { return (int)room.getX();}
     public int getPositionY() { return (int)room.getY();}
 }
