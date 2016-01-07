@@ -127,7 +127,7 @@ public class MapView extends Application {
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
         for (Building b : this.game.getMap().getBuildings()){
-        gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
+        gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
 
             for (Room r : b.getRooms()){
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
@@ -155,7 +155,7 @@ public class MapView extends Application {
 
         //Display password
         for (Password p : game.getCurrentPlayer().getListPassword()){
-            passwordBox.getChildren().add(new Hyperlink(p.getPassword()));
+            passwordBox.getChildren().add((new PasswordView(p)).getPassView());
         }
         if(testDefaite()){
             commandPanelViewGroup.getChildren().clear();
