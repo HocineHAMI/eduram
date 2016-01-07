@@ -21,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,6 +37,7 @@ public class MapView extends Application {
     private Label eclosionLabel;
     private VBox passwordBox;
     private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost;
+    private Text title;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -136,12 +138,13 @@ public class MapView extends Application {
         });
         passwordBox = new VBox();
         eclosionLabel = new Label("Il y a " + 0 +" éclosions.");
+        eclosionLabel.setFont(Font.font("Verdana", 20));
         gameViewGroup = new AnchorPane();
         gameViewGroup.setStyle("-fx-background-color: DAE6F3;");
         commandPanelViewGroup = new FlowPane();
-        commandPanelViewGroup.setPadding(new Insets(10, 5, 10, 5));
-        ((FlowPane) commandPanelViewGroup).setVgap(30);
-        ((FlowPane) commandPanelViewGroup).setHgap(30);
+        commandPanelViewGroup.setPadding(new Insets(20, 15, 20, 15));
+        ((FlowPane) commandPanelViewGroup).setVgap(25);
+        ((FlowPane) commandPanelViewGroup).setHgap(25);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
         commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
@@ -195,7 +198,9 @@ public class MapView extends Application {
         }
 
         //Display password
-        passwordBox.getChildren().add(new Text("Password"));
+        title = new Text("Passwords");
+        title.setFont(Font.font("Verdana", 20));
+        passwordBox.getChildren().add(title);
         for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add((new PasswordView(game, p)).getPassView());
         }
