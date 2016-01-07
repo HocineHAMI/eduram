@@ -99,6 +99,7 @@ public class MapView extends Application {
 
     public void draw()
     {
+        gameViewGroup.getChildren().removeAll();
         for (Building b : this.game.getMap().getBuildings()){
             gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
 
@@ -126,18 +127,8 @@ public class MapView extends Application {
         //Display Player
         gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
 
-        //ADELETE -->
-        ArrayList<Password> tmpPasswords = new ArrayList<Password>();
-        tmpPasswords.add(new Password("TESSFsmsdl3424"));
-        tmpPasswords.add(new Password("TESSFsmsdl3424"));
-        tmpPasswords.add(new Password("13245675432"));
-        tmpPasswords.add(new Password("rejkertj"));
-        tmpPasswords.add(new Password("TESSFsmsdl3424"));
-        tmpPasswords.add(new Password("TESSFsmsdl3424"));
-        tmpPasswords.add(new Password("345353636"));
-        //  <--
         //Display password
-        for (Password p : /*game.getCurrentPlayer().getListPassword()*/ tmpPasswords){
+        for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add(new Hyperlink(p.getPassword()));
         }
     }

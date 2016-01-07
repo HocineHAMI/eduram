@@ -12,21 +12,23 @@ public class Game {
     private ArrayList<Player> players;
     private Map map;
     private int nbPlayers;
-    private Player curentplayer;
+    private Player currentplayer;
+    private PasswordStack pstack;
 
 
     public Game(int Nbplayers)
     {
 
-        map=new Map();
+        map = new Map();
+        pstack = new PasswordStack(map);
         this.nbPlayers = Nbplayers;
 
         players = new ArrayList<Player>();
         for (int i = 0; i < Nbplayers; i++)
         {
-            players.add(new Player(map.getBuildings().get(0).getRooms().get(2)));
+            players.add(new Player(map.getBuildings().get(0).getRooms().get(2), pstack));
         }
-        curentplayer=players.get(0);
+        currentplayer =players.get(0);
 
 
     }
@@ -59,15 +61,15 @@ public class Game {
 
     public Player getCurrentPlayer()
     {
-        return(curentplayer);
+        return(currentplayer);
     }
 
 
     public void nextTurn() {
-        if(players.indexOf(curentplayer)+1<nbPlayers)
-            this.curentplayer = players.get(players.indexOf(curentplayer)+1);
+        if(players.indexOf(currentplayer)+1<nbPlayers)
+            this.currentplayer = players.get(players.indexOf(currentplayer)+1);
         else
-            this.curentplayer = players.get(0);
+            this.currentplayer = players.get(0);
 
             Random r1 = new Random();
 

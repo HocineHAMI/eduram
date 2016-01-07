@@ -11,7 +11,10 @@ public /*abstract*/ class Player {
     private int nbActions=0;
 
 
-    public Player(Room position){
+    public Player(Room position, PasswordStack passStack){
+        passwords = new ArrayList<Password>();
+        getCardFromStack(passStack);
+        System.out.println("test !!!!!");
         this.position = position;
     }
 
@@ -31,11 +34,16 @@ public /*abstract*/ class Player {
 
     }
 
+    public void getCardFromStack(PasswordStack pstack){
+        if (!pstack.isEmpty()){
+            passwords.add(pstack.getOnePass());
+        }
+    }
     public ArrayList<Password> getListPassword(){ return passwords;}
     public Room getPositionRoom(){ return position;}
     public static void main(String[] args){
         Map m = new Map();
-        Player p1 = new Player(m.getBuildings().get(1).getRooms().get(1));
+        Player p1 = new Player(m.getBuildings().get(1).getRooms().get(1), new PasswordStack(m));
         p1.move((m.getBuildings().get(2).getRooms().get(1)));
         p1.move((m.getBuildings().get(1).getRooms().get(2)));
 
