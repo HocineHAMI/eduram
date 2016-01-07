@@ -145,13 +145,19 @@ public class MapView extends Application {
 
             }
         }
+        //Display all players and selected player
         for (int i = 0; i < game.getNbPlayers(); i++) {
+            PlayerView tmpPlayer;
             Player p = game.getPlayers().get(i);
-            gameViewGroup.getChildren().add(new PlayerView(p).getPlayer());
+            if (p == game.getCurrentPlayer()){
+                tmpPlayer = new PlayerView(p);
+                tmpPlayer.setSelectPlayer();
+            }else{
+                tmpPlayer = new PlayerView(p);
+                tmpPlayer.unselectedPlayer();
+            }
+            gameViewGroup.getChildren().add(tmpPlayer.getPlayer());
         }
-
-        //Display Player
-        gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
 
         //Display password
         for (Password p : game.getCurrentPlayer().getListPassword()){
