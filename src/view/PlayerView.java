@@ -19,6 +19,7 @@ public class PlayerView {
     private Player player;
 
     public PlayerView(Game game, Player crtPlayer){
+        player = crtPlayer;
         imagePlayer = new ImageView(new Image("file:img/gamePlayer.png"));
         imagePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

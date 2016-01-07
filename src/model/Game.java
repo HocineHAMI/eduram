@@ -66,6 +66,7 @@ public class Game {
 
         map = new Map();
         pstack = new PasswordStack(map);
+
         this.nbPlayers = Nbplayers;
 
         players = new ArrayList<Player>();
@@ -73,9 +74,7 @@ public class Game {
         {
             players.add(new Player(map.getBuildings().get(0).getRooms().get(2), pstack));
         }
-        currentplayer =players.get(0);
-
-
+        currentplayer = players.get(0);
     }
 
 
@@ -104,18 +103,18 @@ public class Game {
         this.nbPlayers = nbPlayers;
     }
 
+
     public Player getCurrentPlayer()
     {
         return(currentplayer);
     }
-
     public Player getSelectedPlayer() { return selectedPlayer;}
-
     public Password getSelectedPass() { return selectedPass;}
 
     public void setSelectedPass(Password selectedPass) { this.selectedPass = selectedPass;}
-
     public void setSelectedPlayer(Player selectedPlayer) { this.selectedPlayer = selectedPlayer;}
+
+
 
     public void nextTurn(){
 

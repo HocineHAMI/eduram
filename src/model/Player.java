@@ -33,9 +33,11 @@ public /*abstract*/ class Player {
         return false;
 
     }
-    public void givePassword(Password givePass, Player toPlayer){
-        this.passwords.remove(givePass);
-        toPlayer.passwords.add(givePass);
+    public void addPassword(Password givePass){
+        this.passwords.add(givePass);
+    }
+    public void lostPassword(Password lostPass){
+        this.passwords.remove(lostPass);
     }
 
     public void getCardFromStack(PasswordStack pstack){
