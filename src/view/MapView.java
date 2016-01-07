@@ -7,7 +7,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -146,7 +145,7 @@ public class MapView extends Application {
         tmpPasswords.add(new Password("345353636"));
         //  <--
         //Display password
-        for (Password p : /*game.getCurrentPlayer().getListPassword()*/ tmpPasswords){
+        for (Password p : *//*game.getCurrentPlayer().getListPassword()*//* tmpPasswords){
             passwordBox.getChildren().add(new Hyperlink(p.getPassword()));
         }
     }
