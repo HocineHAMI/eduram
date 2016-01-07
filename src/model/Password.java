@@ -10,12 +10,16 @@ import java.util.Random;
 public class Password {
     private String pass;
     private Room bond;
+    private VirusType passType;
 
-    public Password(Room currentBond){
+    public Password(Room currentBond, VirusType color){
+        passType = color;
         bond = currentBond;
         pass = new BigInteger(40, new SecureRandom()).toString();
     }
 
     public String getPassword(){return pass;}
+    public Room getBond(){return bond;}
+    public VirusType getPassType(){return passType;}
 
 }

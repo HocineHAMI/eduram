@@ -17,8 +17,7 @@ public class PasswordStack {
         pstack = new ArrayList<Password>();
         for (Building b : m.getBuildings()){
             for (Room r : b.getRooms()){
-
-                pstack.add(new Password(r));
+                pstack.add(new Password(r, b.colorOfVirus));
             }
         }
         Collections.shuffle(pstack);
