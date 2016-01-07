@@ -11,6 +11,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -31,7 +33,7 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
-    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -57,6 +59,14 @@ public class MapView extends Application {
         //Size of the windows
         windowsSizeX = 1500;
         windowsSizeY = 800;
+
+        buttonLost = new Button("LOST");
+        buttonLost.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                gameOverView();
+            }
+        });
 
         buttonDeleteVirus = new Button("Supprimer un virus");
         buttonDeleteVirus.setOnAction(new EventHandler<ActionEvent>() {
@@ -131,7 +141,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(30);
         ((FlowPane) commandPanelViewGroup).setHgap(30);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, passwordBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
@@ -185,16 +195,10 @@ public class MapView extends Application {
         for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add((new PasswordView(game, p)).getPassView());
         }
+
+        //Defeat gestion
         if(testDefaite()){
-            commandPanelViewGroup.getChildren().clear();
-            final Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.initOwner(stage);
-            VBox dialogVbox = new VBox(20);
-            dialogVbox.getChildren().add(new Text("Vous avez perdu !!!!"));
-            Scene dialogScene = new Scene(dialogVbox, 300, 200);
-            dialog.setScene(dialogScene);
-            dialog.show();
+            gameOverView();
         }
 
     }
@@ -212,6 +216,21 @@ public class MapView extends Application {
 
     public void setSelectedRoom(Room selectedRoom) {
         this.selectedRoom = selectedRoom;
+    }
+
+    public void gameOverView(){
+        commandPanelViewGroup.getChildren().clear();
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(stage);
+        VBox dialogVbox = new VBox(20);
+        ImageView gameOVER = new ImageView(new Image("file:img/gameOver.png"));
+        gameOVER.setFitHeight(700);
+        gameOVER.setFitWidth(800);
+        dialogVbox.getChildren().add(gameOVER);
+        Scene dialogScene = new Scene(dialogVbox, 800, 700);
+        dialog.setScene(dialogScene);
+        dialog.show();
     }
 
 
