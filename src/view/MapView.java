@@ -4,21 +4,22 @@ import controller.CreateAntidoteControler;
 import controller.DeleteVirusControler;
 import controller.MoveControler;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
-
-import javafx.event.ActionEvent;
 
 /**
  * Created by victor on 11/12/15.
@@ -140,7 +141,6 @@ public class MapView extends Application {
 
     public void draw()
     {
-
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
         for (Building b : this.game.getMap().getBuildings()){
@@ -162,13 +162,19 @@ public class MapView extends Application {
 
             }
         }
+        //Display all players and selected player
         for (int i = 0; i < game.getNbPlayers(); i++) {
+            PlayerView tmpPlayer;
             Player p = game.getPlayers().get(i);
-            gameViewGroup.getChildren().add(new PlayerView(p).getPlayer());
+            if (p == game.getCurrentPlayer()){
+                tmpPlayer = new PlayerView(p);
+                tmpPlayer.setSelectPlayer();
+            }else{
+                tmpPlayer = new PlayerView(p);
+                tmpPlayer.unselectedPlayer();
+            }
+            gameViewGroup.getChildren().add(tmpPlayer.getPlayer());
         }
-
-        //Display Player
-        gameViewGroup.getChildren().add(new PlayerView(game.getCurrentPlayer()).getPlayer());
 
         //Display password
         for (Password p : game.getCurrentPlayer().getListPassword()){
