@@ -3,21 +3,22 @@ package view;
 import controller.DeleteVirusControler;
 import controller.MoveControler;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
-
-import javafx.event.ActionEvent;
 
 /**
  * Created by victor on 11/12/15.
@@ -123,7 +124,6 @@ public class MapView extends Application {
 
     public void draw()
     {
-
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
         for (Building b : this.game.getMap().getBuildings()){
