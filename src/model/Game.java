@@ -66,6 +66,7 @@ public class Game {
 
 
     public void nextTurn() {
+        currentplayer.getCardFromStack(pstack);
         if(players.indexOf(currentplayer)+1<nbPlayers)
             this.currentplayer = players.get(players.indexOf(currentplayer)+1);
         else
