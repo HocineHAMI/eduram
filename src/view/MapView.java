@@ -11,6 +11,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -143,7 +145,6 @@ public class MapView extends Application {
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
         commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
-        FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
 
         windowsGroup = new AnchorPane();
@@ -168,7 +169,9 @@ public class MapView extends Application {
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
 
                 for (Room nr : r.getNeighborsRooms()){
-                    gameViewGroup.getChildren().add(new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50));
+                    Line tmpLine = new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50);
+                    tmpLine.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
+                    gameViewGroup.getChildren().add(tmpLine);
                 }
                 for (Virus v : r.getViruses()){
                     gameViewGroup.getChildren().add(new VirusView(v.getVirusType(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
@@ -192,6 +195,7 @@ public class MapView extends Application {
         }
 
         //Display password
+        passwordBox.getChildren().add(new Text("Password"));
         for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add((new PasswordView(game, p)).getPassView());
         }
@@ -219,7 +223,8 @@ public class MapView extends Application {
     }
 
     public void gameOverView(){
-        commandPanelViewGroup.getChildren().clear();
+        stage.hide();
+        //commandPanelViewGroup.getChildren().clear();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(stage);
