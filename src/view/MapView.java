@@ -1,6 +1,7 @@
 package view;
 
 import controller.DeleteVirusControler;
+import controller.GivePassword;
 import controller.MoveControler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -29,7 +30,7 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
-    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonAction4;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonGivePass;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -92,8 +93,15 @@ public class MapView extends Application {
 
         buttonAction3 = new Button("Action de classe");
 
-        buttonAction4 = new Button("Action4");
-
+        buttonGivePass = new Button("Donner un PASS");
+        buttonGivePass.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                GivePassword.give(game);
+                System.out.println("give a pass !!");
+                draw();
+            }
+        });
         passwordBox = new VBox();
         eclosionLabel = new Label("Il y a " + 0 +" éclosions.");
         gameViewGroup = new AnchorPane();
@@ -103,7 +111,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(30);
         ((FlowPane) commandPanelViewGroup).setHgap(30);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonAction4, passwordBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonGivePass, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
@@ -114,10 +122,6 @@ public class MapView extends Application {
         AnchorPane.setRightAnchor(commandPanelViewGroup, 5.0);
         windowsScene = new Scene(windowsGroup, windowsSizeX, windowsSizeY, Color.BLACK);
 
-        /*for (Password pwd : player.getListPassword()){
-            passwordBox.getChildren().add();
-        }
-        commandPanelViewGroup.getChildren().add(passwordBox);*/
         draw();
 
     }
@@ -132,8 +136,6 @@ public class MapView extends Application {
             for (Room r : b.getRooms()){
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
-                /*r.infect(new Virus(r, VirusType.GOLD));
-                r.infect(new Virus(r, VirusType.RED));*/
 
                 for (Room nr : r.getNeighborsRooms()){
                     gameViewGroup.getChildren().add(new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50));
@@ -150,18 +152,18 @@ public class MapView extends Application {
             PlayerView tmpPlayer;
             Player p = game.getPlayers().get(i);
             if (p == game.getCurrentPlayer()){
-                tmpPlayer = new PlayerView(p);
+                tmpPlayer = new PlayerView(game, p);
                 tmpPlayer.setSelectPlayer();
             }else{
-                tmpPlayer = new PlayerView(p);
+                tmpPlayer = new PlayerView(game, p);
                 tmpPlayer.unselectedPlayer();
             }
-            gameViewGroup.getChildren().add(tmpPlayer.getPlayer());
+            gameViewGroup.getChildren().add(tmpPlayer.getImagePlayer());
         }
 
         //Display password
         for (Password p : game.getCurrentPlayer().getListPassword()){
-            passwordBox.getChildren().add((new PasswordView(p)).getPassView());
+            passwordBox.getChildren().add((new PasswordView(game, p)).getPassView());
         }
         if(testDefaite()){
             commandPanelViewGroup.getChildren().clear();

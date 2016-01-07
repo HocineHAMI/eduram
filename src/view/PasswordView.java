@@ -1,7 +1,10 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import model.Game;
 import model.Password;
 
 /**
@@ -11,9 +14,15 @@ public class PasswordView {
     private Hyperlink passView;
     private Password password;
 
-    public PasswordView(Password currentPass){
+    public PasswordView(Game game, Password currentPass){
         password = currentPass;
         passView = new Hyperlink(password.getPassword());
+        passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                game.setSelectedPass(password);
+            }
+        });
         switch (currentPass.getPassType()){
             case GREEN:
                 passView.setTextFill(Color.GREEN);

@@ -13,6 +13,8 @@ public class Game {
     private Map map;
     private int nbPlayers;
     private Player currentplayer;
+    private Player selectedPlayer;
+    private Password selectedPass;
 
     public PasswordStack getPstack() {
         return pstack;
@@ -69,6 +71,13 @@ public class Game {
         return(currentplayer);
     }
 
+    public Player getSelectedPlayer() { return selectedPlayer;}
+
+    public Password getSelectedPass() { return selectedPass;}
+
+    public void setSelectedPass(Password selectedPass) { this.selectedPass = selectedPass;}
+
+    public void setSelectedPlayer(Player selectedPlayer) { this.selectedPlayer = selectedPlayer;}
 
     public void nextTurn(){
 
