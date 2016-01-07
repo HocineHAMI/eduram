@@ -1,5 +1,6 @@
 package view;
 
+import controller.CreateAntidoteControler;
 import controller.DeleteVirusControler;
 import controller.GivePassword;
 import controller.MoveControler;
@@ -30,7 +31,7 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
-    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonGivePass;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -91,7 +92,6 @@ public class MapView extends Application {
             }
         });
 
-        buttonAction3 = new Button("Action de classe");
 
         buttonGivePass = new Button("Donner un PASS");
         buttonGivePass.setOnAction(new EventHandler<ActionEvent>() {
@@ -100,6 +100,26 @@ public class MapView extends Application {
                 GivePassword.give(game);
                 System.out.println("give a pass !!");
                 draw();
+            }
+        });
+
+        buttonAntidote = new Button("Creer antidote !");
+        buttonAntidote.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(CreateAntidoteControler.creerAntidote(game)){
+                    commandPanelViewGroup.getChildren().clear();
+                    final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initOwner(stage);
+                    VBox dialogVbox = new VBox(20);
+                    dialogVbox.getChildren().add(new Text("Félicitation, vous avez gagné !!!!"));
+                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                    dialog.setScene(dialogScene);
+                    dialog.show();
+                }
+                else{draw();}
+                System.out.println("Tentative antidote !");
             }
         });
         passwordBox = new VBox();
@@ -111,7 +131,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(30);
         ((FlowPane) commandPanelViewGroup).setHgap(30);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonGivePass, passwordBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 

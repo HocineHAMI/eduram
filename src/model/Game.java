@@ -16,6 +16,44 @@ public class Game {
     private Player selectedPlayer;
     private Password selectedPass;
 
+    private boolean antidoteJaune=false;
+    private boolean antidoteVert=false;
+    private boolean antidoteRouge=false;
+    private boolean antidoteBleu=false;
+
+    public boolean isAntidoteJaune() {
+        return antidoteJaune;
+    }
+
+    public boolean isAntidoteVert() {
+        return antidoteVert;
+    }
+
+    public boolean isAntidoteRouge() {
+        return antidoteRouge;
+    }
+
+    public boolean isAntidoteBleu() {
+        return antidoteBleu;
+    }
+
+    public void setAntidoteVert(boolean antidoteVert) {
+        this.antidoteVert = antidoteVert;
+    }
+
+    public void setAntidoteRouge(boolean antidoteRouge) {
+        this.antidoteRouge = antidoteRouge;
+    }
+
+    public void setAntidoteBleu(boolean antidoteBleu) {
+        this.antidoteBleu = antidoteBleu;
+    }
+
+    public void setAntidoteJaune(boolean antidoteJaune) {
+        this.antidoteJaune = antidoteJaune;
+    }
+
+
     public PasswordStack getPstack() {
         return pstack;
     }
