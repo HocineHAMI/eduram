@@ -55,6 +55,10 @@ public class Room {
         }
     }
 
+    public void delVirus(){
+        this.viruses.remove(0);
+    }
+
 
     public String toString(){
 

@@ -39,6 +39,16 @@ public /*abstract*/ class Player {
             passwords.add(pstack.getOnePass());
         }
     }
+    public boolean delVirus(Room r)
+    {
+        if(r.getViruses().size()!=0)
+        {
+            r.delVirus();
+            return true;
+        }
+        return false;
+    }
+
     public ArrayList<Password> getListPassword(){ return passwords;}
     public Room getPositionRoom(){ return position;}
     public static void main(String[] args){
