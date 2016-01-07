@@ -13,6 +13,11 @@ public class Game {
     private Map map;
     private int nbPlayers;
     private Player currentplayer;
+
+    public PasswordStack getPstack() {
+        return pstack;
+    }
+
     private PasswordStack pstack;
 
 
@@ -65,7 +70,8 @@ public class Game {
     }
 
 
-    public void nextTurn() {
+    public void nextTurn(){
+
         currentplayer.getCardFromStack(pstack);
         if(players.indexOf(currentplayer)+1<nbPlayers)
             this.currentplayer = players.get(players.indexOf(currentplayer)+1);

@@ -9,10 +9,15 @@ import java.util.Collections;
 public class PasswordStack {
     private ArrayList<Password> pstack;
 
+    public ArrayList<Password> getPstack() {
+        return pstack;
+    }
+
     public PasswordStack(Map m){
         pstack = new ArrayList<Password>();
         for (Building b : m.getBuildings()){
             for (Room r : b.getRooms()){
+
                 pstack.add(new Password(r));
             }
         }
