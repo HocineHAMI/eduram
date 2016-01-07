@@ -12,12 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
 
 import javafx.event.ActionEvent;
-
-import java.util.ArrayList;
 
 /**
  * Created by victor on 11/12/15.
@@ -28,7 +28,7 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
-    private Button buttonDeleteVirus, buttonMove, buttonAction2, buttonAction3, buttonAction4;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonAction4;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -74,7 +74,21 @@ public class MapView extends Application {
                 draw();
             }
         });
-        buttonAction2 = new Button("Action2");
+        buttonTP1 = new Button("Teleportation 1");
+        buttonTP1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                final Stage dialog = new Stage();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                dialog.initOwner(stage);
+                VBox dialogVbox = new VBox(20);
+                dialogVbox.getChildren().add(new Text("Now you have to select \nthe room where you want to TP \nin exchange of this password !"));
+                Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                dialog.setScene(dialogScene);
+                dialog.show();
+            }
+        });
+
         buttonAction3 = new Button("Action3");
         buttonAction4 = new Button("Action4");
 
@@ -87,7 +101,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(30);
         ((FlowPane) commandPanelViewGroup).setHgap(30);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonAction2, buttonAction3, buttonAction4, passwordBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAction3, buttonAction4, passwordBox);
         commandPanelViewGroup.setMaxSize(30,30);
         FlowPane.setMargin(commandPanelViewGroup, new Insets(100,100,100,100));
 
@@ -151,4 +165,6 @@ public class MapView extends Application {
     public void setSelectedRoom(Room selectedRoom) {
         this.selectedRoom = selectedRoom;
     }
+
+
 }
