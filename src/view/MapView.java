@@ -58,7 +58,7 @@ public class MapView extends Application {
         windowsSizeX = 1500;
         windowsSizeY = 800;
 
-        buttonDeleteVirus = new Button("DeleteVirus");
+        buttonDeleteVirus = new Button("Supprimer un virus");
         buttonDeleteVirus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -68,7 +68,7 @@ public class MapView extends Application {
             }
         });
 
-        buttonMove = new Button("Move");
+        buttonMove = new Button("Déplacement");
         buttonMove.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -77,7 +77,7 @@ public class MapView extends Application {
                 draw();
             }
         });
-        buttonTP1 = new Button("Teleportation 1");
+        buttonTP1 = new Button("Téléportation");
         buttonTP1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -93,7 +93,7 @@ public class MapView extends Application {
         });
 
 
-        buttonGivePass = new Button("Donner un PASS");
+        buttonGivePass = new Button("Donner un Pass");
         buttonGivePass.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

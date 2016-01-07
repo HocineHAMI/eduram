@@ -14,7 +14,7 @@ public /*abstract*/ class Player {
     public Player(Room position, PasswordStack passStack){
         passwords = new ArrayList<Password>();
         getCardFromStack(passStack);
-        System.out.println("test !!!!!");
+        System.out.println("Creation Player !!!!!");
         this.position = position;
     }
 
