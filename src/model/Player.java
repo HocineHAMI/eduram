@@ -41,7 +41,7 @@ public /*abstract*/ class Player {
     }
     public boolean delVirus(Room r)
     {
-        if(r.getViruses().size()!=0)
+        if((r.getViruses().size()!=0)&&(this.position==r))
         {
             r.delVirus();
             return true;
