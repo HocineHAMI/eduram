@@ -21,6 +21,9 @@ public class CreateAntidoteControler {
                 nbRouge++;
             }
             if(p.getPassType()==VirusType.BLUE){
+                nbBleu++;
+            }
+            if(p.getPassType()==VirusType.GREEN){
                 nbVert++;
             }
             if(p.getPassType()==VirusType.GOLD){
@@ -35,7 +38,7 @@ public class CreateAntidoteControler {
                 if(p.getPassType()==VirusType.BLUE){
                     l.add(p);
                     i++;
-                    if(i==4) {
+                    if(i==3) {
                         for(Password p1 : l){
                             game.getCurrentPlayer().getListPassword().remove(p1);
                         }
@@ -58,7 +61,7 @@ public class CreateAntidoteControler {
                     if(p.getPassType()==VirusType.RED){
                         l.add(p);;
                         i++;
-                        if(i==4) {
+                        if(i==3) {
                             for(Password p1 : l){
                                 game.getCurrentPlayer().getListPassword().remove(p1);
                             }
@@ -82,7 +85,7 @@ public class CreateAntidoteControler {
                     if(p.getPassType()==VirusType.GREEN){
                         l.add(p);
                         i++;
-                        if(i==4) {
+                        if(i==3) {
                             for(Password p1 : l){
                                 game.getCurrentPlayer().getListPassword().remove(p1);
                             }
@@ -106,7 +109,7 @@ public class CreateAntidoteControler {
                     if(p.getPassType()==VirusType.GOLD){
                         l.add(p);
                         i++;
-                        if(i==4) {
+                        if(i==3) {
                             for(Password p1 : l){
                                 game.getCurrentPlayer().getListPassword().remove(p1);
                             }
