@@ -89,7 +89,8 @@ public class MapView extends Application {
             }
         });
 
-        buttonAction3 = new Button("Action3");
+        buttonAction3 = new Button("Action de classe");
+
         buttonAction4 = new Button("Action4");
 
         passwordBox = new VBox();
@@ -122,6 +123,7 @@ public class MapView extends Application {
 
     public void draw()
     {
+
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
         for (Building b : this.game.getMap().getBuildings()){
@@ -155,7 +157,25 @@ public class MapView extends Application {
         for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add(new Hyperlink(p.getPassword()));
         }
+        if(testDefaite()){
+            commandPanelViewGroup.getChildren().clear();
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(stage);
+            VBox dialogVbox = new VBox(20);
+            dialogVbox.getChildren().add(new Text("Vous avez perdu !!!!"));
+            Scene dialogScene = new Scene(dialogVbox, 300, 200);
+            dialog.setScene(dialogScene);
+            dialog.show();
+        }
 
+    }
+
+    private boolean testDefaite() {
+        if(game.getPstack().getPstack().size()==0){
+            return true;
+        }
+        return false;
     }
 
     public void setGame(Game game) {
