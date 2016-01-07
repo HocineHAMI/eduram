@@ -108,9 +108,10 @@ public class MapView extends Application {
 
     public void draw()
     {
-        gameViewGroup.getChildren().removeAll();
+        gameViewGroup.getChildren().clear();
+        passwordBox.getChildren().clear();
         for (Building b : this.game.getMap().getBuildings()){
-            gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
+        gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY()).getBuilding()));
 
             for (Room r : b.getRooms()){
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
@@ -140,6 +141,7 @@ public class MapView extends Application {
         for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add(new Hyperlink(p.getPassword()));
         }
+
     }
 
     public void setGame(Game game) {
