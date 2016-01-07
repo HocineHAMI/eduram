@@ -106,6 +106,7 @@ public class MapView extends Application {
                     dialog.setScene(dialogScene);
                     dialog.show();
                 }
+                else{draw();}
                 System.out.println("Tentative antidote !");
             }
         });
