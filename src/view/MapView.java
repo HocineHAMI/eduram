@@ -34,7 +34,7 @@ public class MapView extends Application {
     private Label eclosionLabel;
     private VBox passwordBox;
     private HBox antivirusBox;
-    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonSpecial, buttonLost;
     private Text titlePassword, titleAntiVirus;
     private int windowsSizeX, windowsSizeY;
     private Game game;
@@ -113,6 +113,15 @@ public class MapView extends Application {
             }
         });
 
+        buttonSpecial = new Button("Action Spéciale");
+        buttonSpecial.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("compétence spéciale");
+                draw();
+            }
+        });
+
         buttonAntidote = new Button("Créer antidote !");
         buttonAntidote.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -146,7 +155,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(25);
         ((FlowPane) commandPanelViewGroup).setHgap(25);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox, titleAntiVirus, antivirusBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonSpecial, buttonLost, passwordBox, titleAntiVirus, antivirusBox);
         commandPanelViewGroup.setMaxSize(30,30);
 
 
