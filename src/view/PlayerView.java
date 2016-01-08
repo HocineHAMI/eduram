@@ -1,5 +1,6 @@
 package view;
 
+import controller.PlayerSelectControler;
 import javafx.event.EventHandler;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
@@ -24,7 +25,7 @@ public class PlayerView {
         imagePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                game.setSelectedPlayer(player);
+                PlayerSelectControler.selectPlayer(game, player);
             }
         });
         imagePlayer.setFitWidth(40);
