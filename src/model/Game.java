@@ -70,11 +70,13 @@ public class Game {
         this.nbPlayers = Nbplayers;
 
         players = new ArrayList<Player>();
-        for (int i = 0; i < Nbplayers; i++)
+        for (int i = 0; i < Nbplayers-1; i++)
         {
             players.add(new Player(map.getBuildings().get(0).getRooms().get(2), pstack, this));
         }
         currentplayer = players.get(0);
+        players.add(new AdminSys(map.getBuildings().get(1).getRooms().get(2), pstack, this));
+
     }
 
 

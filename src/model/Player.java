@@ -8,10 +8,10 @@ import java.util.ArrayList;
  * Created by victor on 08/12/15.
  */
 public /*abstract*/ class Player {
-    private Game game;
-    private Room position;
-    private ArrayList<Password> passwords;
-    private int nbActions=0;
+    protected Game game;
+    protected Room position;
+    protected ArrayList<Password> passwords;
+    protected int nbActions=0;
 
 
     public Player(Room position, PasswordStack passStack, Game game){
