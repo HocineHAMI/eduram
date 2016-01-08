@@ -37,6 +37,19 @@ public /*abstract*/ class Player {
         return false;
 
     }
+
+    public boolean moveTP(Room next, Password pass){
+
+        if(next==null)
+            return false;
+            this.position = next;
+            this.passwords.remove(pass);
+        System.out.println(next);
+            System.out.println("Deplacement Terminé !");
+            return true;
+
+    }
+
     public void addPassword(Password givePass){
         this.passwords.add(givePass);
     }
@@ -51,26 +64,32 @@ public /*abstract*/ class Player {
     }
     public boolean delVirus(Room r)
     {
+
         if((r.getViruses().size()!=0)&&(this.position==r))
         {
             switch (r.getBuilding().getColor()){
                 case GREEN:
-                    if(game.isAntidoteVert())
+                    if(game.isAntidoteVert()){
                         r.deleteAllVirus(VirusType.GREEN);
-                    return true;
+                        return true;
+                    }
                 case GOLD:
-                    if(game.isAntidoteJaune())
+                    if(game.isAntidoteJaune()){
                         r.deleteAllVirus(VirusType.GOLD);
-                    return true;
+                        return true;
+                    }
                 case RED:
-                    if(game.isAntidoteRouge())
+                    if(game.isAntidoteRouge()){
                         r.deleteAllVirus(VirusType.RED);
-                    return true;
+                        return true;
+                    }
                 case BLUE:
-                    if(game.isAntidoteBleu())
+                    if(game.isAntidoteBleu()){
                         r.deleteAllVirus(VirusType.BLUE);
-                    return true;
+                        return true;
+                    }
             }
+            System.out.println("appel Supression "+r);
             r.delVirus();
             return true;
         }

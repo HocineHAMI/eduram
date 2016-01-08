@@ -14,15 +14,21 @@ public class Virus {
         type = color;
     }
 
-    public static void ajouterVirus(Room r, VirusType type){
+    /*public static void ajouterVirus(Room r, VirusType type){
         r.infect(new Virus(r, type));
-    }
+    }*/
 
-    public static void propagation(Room room, Virus v) {
-        for (int i = 0; i < room.getNeighborsRooms().size(); i++) {
-            room.getNeighborsRooms().get(i).infect(new Virus(room.getNeighborsRooms().get(i), v.type));
+    public static void propagation(Room room, Virus v, Game g) {
+        g.setNbPropagation(g.getNbPropagation() + 1);
+        if(g.getNbPropagation()>5){
+            System.out.println("Game Over propagation !!!");
         }
+        else {
+            for (int i = 0; i < room.getNeighborsRooms().size(); i++) {
+                room.getNeighborsRooms().get(i).infect(new Virus(room.getNeighborsRooms().get(i), v.type));
+            }
 
+        }
     }
 
     public VirusType getVirusType(){ return type; }

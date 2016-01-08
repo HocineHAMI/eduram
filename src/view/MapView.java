@@ -39,6 +39,8 @@ public class MapView extends Application {
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
+    private Room selectedTpRoom;
+    private Password selectedPass;
 
     public MapView(){
         super();
@@ -74,7 +76,7 @@ public class MapView extends Application {
         buttonDeleteVirus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DeleteVirusControler.deleteVirus(game, selectedRoom);
+                if(DeleteVirusControler.deleteVirus(game, selectedRoom))
                 System.out.println("supression de virus !! : ");
                 draw();
             }
@@ -93,14 +95,10 @@ public class MapView extends Application {
         buttonTP1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                final Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initOwner(stage);
-                VBox dialogVbox = new VBox(20);
-                dialogVbox.getChildren().add(new Text("Now you have to select \nthe room where you want to TP \nin exchange of this password !"));
-                Scene dialogScene = new Scene(dialogVbox, 300, 200);
-                dialog.setScene(dialogScene);
-                dialog.show();
+
+                MoveControler.moveTp(game, selectedTpRoom, selectedPass);
+                draw();
+
             }
         });
 
@@ -147,7 +145,8 @@ public class MapView extends Application {
         antivirusBox = new HBox();
         titleAntiVirus = new Text("Anti-Virus");
         titleAntiVirus.setFont(Font.font("Verdana", 20));
-        eclosionLabel = new Label("Il y a " + 0 +" éclosions.");
+
+        eclosionLabel = new Label("Il y a " + game.getNbPropagation() +" éclosions.");
         eclosionLabel.setFont(Font.font("Verdana", 20));
         gameViewGroup = new AnchorPane();
         gameViewGroup.setStyle("-fx-background-color: DAE6F3;");
@@ -175,6 +174,8 @@ public class MapView extends Application {
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
         antivirusBox.getChildren().clear();
+        eclosionLabel.setText("Il y a " + game.getNbPropagation() + " éclosions.");
+        selectedTpRoom = null;
         for (Building b : this.game.getMap().getBuildings()){
         gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
 
@@ -183,11 +184,11 @@ public class MapView extends Application {
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
 
                 //r.infect(new Virus(r, VirusType.RED));
-                //r.infect(new Virus(r, VirusType.RED));
+                //r.infect(new Virus(r, VirusType.BLUE));
                 /*r.infect(new Virus(r, VirusType.GREEN));
 
                 r.infect(new Virus(r, VirusType.GREEN));
-                r.infect(new Virus(r, VirusType.RED));*/
+                r.infect(new Virus(r, VirusType.GOLD));*/
 
                 for (Room nr : r.getNeighborsRooms()){
                     Line tmpLine = new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50);
@@ -221,7 +222,7 @@ public class MapView extends Application {
         titlePassword.setFont(Font.font("Verdana", 20));
         passwordBox.getChildren().add(titlePassword);
         for (Password p : game.getCurrentPlayer().getListPassword()){
-            passwordBox.getChildren().add((new PasswordView(game, p)).getPassView());
+            passwordBox.getChildren().add((new PasswordView(game, p,this)).getPassView());
         }
 
         //Draw Antivirus
@@ -239,6 +240,9 @@ public class MapView extends Application {
 
     private boolean testDefaite() {
         if(game.getPstack().getPstack().size()==0){
+            return true;
+        }
+        if(game.getNbPropagation()>=5){
             return true;
         }
         return false;
@@ -269,4 +273,19 @@ public class MapView extends Application {
     }
 
 
+    public Room getSelectedTpRoom() {
+        return selectedTpRoom;
+    }
+
+    public void setSelectedTpRoom(Room selectedTpRoom) {
+        this.selectedTpRoom = selectedTpRoom;
+    }
+
+    public Password getSelectedPass() {
+        return selectedPass;
+    }
+
+    public void setSelectedPass(Password selectedPass) {
+        this.selectedPass = selectedPass;
+    }
 }

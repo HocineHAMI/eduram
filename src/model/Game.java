@@ -15,7 +15,7 @@ public class Game {
     private Player currentplayer;
     private Player selectedPlayer;
     private Password selectedPass;
-
+    private int nbPropagation = 0;
     private boolean antidoteJaune=false;
     private boolean antidoteVert=false;
     private boolean antidoteRouge=false;
@@ -64,7 +64,7 @@ public class Game {
     public Game(int Nbplayers)
     {
 
-        map = new Map();
+        map = new Map(this);
         pstack = new PasswordStack(map);
 
         this.nbPlayers = Nbplayers;
@@ -133,5 +133,13 @@ public class Game {
             noRoom = r1.nextInt(map.getBuildings().get(noBuilding).getRooms().size());
             map.getBuildings().get(noBuilding).getRooms().get(noRoom).infect(new Virus(map.getBuildings().get(noBuilding).getRooms().get(noRoom), map.getBuildings().get(noBuilding).getColor()));
 
+    }
+
+    public int getNbPropagation() {
+        return nbPropagation;
+    }
+
+    public void setNbPropagation(int nbPropagation) {
+        this.nbPropagation = nbPropagation;
     }
 }

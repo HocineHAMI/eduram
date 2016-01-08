@@ -28,6 +28,7 @@ public class RoomView {
                    room.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
                    System.out.println("room selected : "+currentRoom);
                    //slctRoom.draw();
+                   //mapView.draw();
                }
            });
         room.setFitHeight(60);
