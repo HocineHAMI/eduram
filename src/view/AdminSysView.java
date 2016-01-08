@@ -11,11 +11,11 @@ import model.Player;
 /**
  * Created by victor on 08/01/16.
  */
-public class ScientistView extends PlayerView {
-    public ScientistView(int i, Game g, Player crtPlayer){
+public class AdminSysView extends PlayerView{
+    public AdminSysView(int i, Game g, Player crtPlayer){
         super(i, g, crtPlayer);
 
-        imagePlayer = new ImageView(new Image("file:img/scientistPlayer.png"));
+        imagePlayer = new ImageView(new Image("file:img/sysAdminPlayer.png"));
         imagePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

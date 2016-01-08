@@ -1,9 +1,6 @@
 package view;
 
-import controller.CreateAntidoteControler;
-import controller.DeleteVirusControler;
-import controller.GivePassword;
-import controller.MoveControler;
+import controller.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,7 +31,7 @@ public class MapView extends Application {
     private Label eclosionLabel;
     private VBox passwordBox;
     private HBox antivirusBox;
-    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass;
     private Text textStack, titlePassword, titleAntiVirus;
     private int windowsSizeX, windowsSizeY;
     private Game game;
@@ -63,14 +60,6 @@ public class MapView extends Application {
         //Size of the windows
         windowsSizeX = 1500;
         windowsSizeY = 800;
-
-        buttonLost = new Button("LOST");
-        buttonLost.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                gameOverView();
-            }
-        });
 
         buttonDeleteVirus = new Button("Supprimer un virus");
         buttonDeleteVirus.setOnAction(new EventHandler<ActionEvent>() {
@@ -149,7 +138,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(25);
         ((FlowPane) commandPanelViewGroup).setHgap(25);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, textStack, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox, titleAntiVirus, antivirusBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, textStack, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, passwordBox, titleAntiVirus, antivirusBox);
         commandPanelViewGroup.setMaxSize(30,30);
 
 
@@ -177,13 +166,6 @@ public class MapView extends Application {
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
 
-                //r.infect(new Virus(r, VirusType.RED));
-                //r.infect(new Virus(r, VirusType.BLUE));
-                /*r.infect(new Virus(r, VirusType.GREEN));
-
-                r.infect(new Virus(r, VirusType.GREEN));
-                r.infect(new Virus(r, VirusType.GOLD));*/
-
                 for (Room nr : r.getNeighborsRooms()){
                     Line tmpLine = new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50);
                     tmpLine.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
@@ -203,9 +185,11 @@ public class MapView extends Application {
             Player p = game.getPlayers().get(i);
             if (p == game.getCurrentPlayer()){
                 tmpPlayer = new PlayerView(i, game, p);
+                tmpPlayer = TypePlayerController.chooseTypePlayer(i, game, p, tmpPlayer);
                 tmpPlayer.setSelectPlayer();
             }else{
                 tmpPlayer = new PlayerView(i, game, p);
+                tmpPlayer = TypePlayerController.chooseTypePlayer(i, game, p, tmpPlayer);
                 tmpPlayer.unselectedPlayer();
             }
             gameViewGroup.getChildren().add(tmpPlayer.getImagePlayer());
