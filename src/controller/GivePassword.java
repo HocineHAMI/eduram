@@ -7,8 +7,10 @@ import model.Game;
  */
 public class GivePassword {
     public static void give(Game game){
-        game.getCurrentPlayer().lostPassword(game.getSelectedPass());
-        game.getSelectedPlayer().addPassword(game.getSelectedPass());
+        if (game.getCurrentPlayer().getPositionRoom() == game.getSelectedPlayer().getPositionRoom()){
+            game.getCurrentPlayer().lostPassword(game.getSelectedPass());
+            game.getSelectedPlayer().addPassword(game.getSelectedPass());
+        }
 
         game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
         if(game.getCurrentPlayer().getNbActions()>=4) {
