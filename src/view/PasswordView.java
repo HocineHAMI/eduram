@@ -15,15 +15,17 @@ public class PasswordView {
     private Hyperlink passView;
     private Password password;
     private Game game;
+    private MapView map;
 
-    public PasswordView(Game sgame, Password currentPass){
+    public PasswordView(Game sgame, Password currentPass, MapView m){
+        this.map=m;
         password = currentPass;
         this.game = sgame;
         passView = new Hyperlink(password.getPassword());
         passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                PasswordSelectControler.selectPass(game, password);
+                PasswordSelectControler.selectPass(game, password,map);
             }
         });
         switch (currentPass.getPassType()){

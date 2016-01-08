@@ -1,6 +1,7 @@
 package controller;
 
 import model.Game;
+import model.Password;
 import model.Player;
 import model.Room;
 
@@ -25,4 +26,18 @@ public class MoveControler {
 
     }
 
+    public static boolean moveTp(Game game, Room selectedTpRoom, Password pass) {
+        if(game.getCurrentPlayer().moveTP(selectedTpRoom,pass))
+        {
+            game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
+            if(game.getCurrentPlayer().getNbActions()>=4) {
+                game.getCurrentPlayer().setNbActions(0);
+                game.nextTurn();
+            }
+            return true;
+        }
+
+        return false;
+
+    }
 }

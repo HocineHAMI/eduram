@@ -41,6 +41,8 @@ public class MapView extends Application {
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
+    private Room selectedTpRoom;
+    private Password selectedPass;
 
     public MapView(){
         super();
@@ -76,8 +78,8 @@ public class MapView extends Application {
         buttonDeleteVirus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DeleteVirusControler.deleteVirus(game, selectedRoom);
-                System.out.println("supression de virus !! : ");
+                if(DeleteVirusControler.deleteVirus(game, selectedRoom))
+                    System.out.println("supression de virus !! : ");
                 draw();
             }
         });
@@ -95,14 +97,10 @@ public class MapView extends Application {
         buttonTP1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                final Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initOwner(stage);
-                VBox dialogVbox = new VBox(20);
-                dialogVbox.getChildren().add(new Text("Now you have to select \nthe room where you want to TP \nin exchange of this password !"));
-                Scene dialogScene = new Scene(dialogVbox, 300, 200);
-                dialog.setScene(dialogScene);
-                dialog.show();
+
+                MoveControler.moveTp(game, selectedTpRoom, selectedPass);
+                draw();
+
             }
         });
 
@@ -166,7 +164,8 @@ public class MapView extends Application {
     {
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
-        eclosionLabel.setText("Il y a " + game.getNbPropagation() +" éclosions.");
+        eclosionLabel.setText("Il y a " + game.getNbPropagation() + " éclosions.");
+        selectedTpRoom = null;
         for (Building b : this.game.getMap().getBuildings()){
             gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
 
@@ -174,14 +173,22 @@ public class MapView extends Application {
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
 
+                //r.infect(new Virus(r, VirusType.RED));
+                //r.infect(new Virus(r, VirusType.BLUE));
+                /*r.infect(new Virus(r, VirusType.GREEN));
+
+                r.infect(new Virus(r, VirusType.GREEN));
+                r.infect(new Virus(r, VirusType.GOLD));*/
+
                 for (Room nr : r.getNeighborsRooms()){
                     Line tmpLine = new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50);
                     tmpLine.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
                     gameViewGroup.getChildren().add(tmpLine);
                 }
+                int i = 0;
                 for (Virus v : r.getViruses()){
-                    gameViewGroup.getChildren().add(new VirusView(v.getVirusType(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
-
+                    gameViewGroup.getChildren().add(new VirusView(i, v.getVirusType(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
+                    i++;
                 }
 
             }
@@ -191,10 +198,10 @@ public class MapView extends Application {
             PlayerView tmpPlayer;
             Player p = game.getPlayers().get(i);
             if (p == game.getCurrentPlayer()){
-                tmpPlayer = new PlayerView(game, p);
+                tmpPlayer = new PlayerView(i, game, p);
                 tmpPlayer.setSelectPlayer();
             }else{
-                tmpPlayer = new PlayerView(game, p);
+                tmpPlayer = new PlayerView(i, game, p);
                 tmpPlayer.unselectedPlayer();
             }
             gameViewGroup.getChildren().add(tmpPlayer.getImagePlayer());
@@ -205,7 +212,7 @@ public class MapView extends Application {
         title.setFont(Font.font("Verdana", 20));
         passwordBox.getChildren().add(title);
         for (Password p : game.getCurrentPlayer().getListPassword()){
-            passwordBox.getChildren().add((new PasswordView(game, p)).getPassView());
+            passwordBox.getChildren().add((new PasswordView(game, p,this)).getPassView());
         }
 
         //Defeat gestion
@@ -250,4 +257,19 @@ public class MapView extends Application {
     }
 
 
+    public Room getSelectedTpRoom() {
+        return selectedTpRoom;
+    }
+
+    public void setSelectedTpRoom(Room selectedTpRoom) {
+        this.selectedTpRoom = selectedTpRoom;
+    }
+
+    public Password getSelectedPass() {
+        return selectedPass;
+    }
+
+    public void setSelectedPass(Password selectedPass) {
+        this.selectedPass = selectedPass;
+    }
 }

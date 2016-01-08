@@ -58,7 +58,9 @@ public class Room {
     }
 
     public void delVirus(){
-        this.viruses.remove(0);
+        System.out.println("Les virus avant "+viruses);
+        this.viruses.remove(this.viruses.size()-1);
+        System.out.println("Les virus apres " + viruses);
     }
 
 
