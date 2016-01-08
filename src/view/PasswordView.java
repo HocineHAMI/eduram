@@ -23,7 +23,7 @@ public class PasswordView {
         passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                PasswordSelectControler.selectPass(game);
+                PasswordSelectControler.selectPass(game, password);
             }
         });
         switch (currentPass.getPassType()){
