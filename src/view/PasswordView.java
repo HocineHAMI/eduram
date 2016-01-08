@@ -13,8 +13,10 @@ import model.Password;
 public class PasswordView {
     private Hyperlink passView;
     private Password password;
+    private Game game;
 
     public PasswordView(Game game, Password currentPass){
+        this.game = game;
         password = currentPass;
         passView = new Hyperlink(password.getPassword());
         passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
