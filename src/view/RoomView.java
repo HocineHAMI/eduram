@@ -43,6 +43,8 @@ public class RoomView {
         }
         room.setX(positionX);
         room.setY(positionY);
+
+        currentRoom.setRoomView(this);
     }
 
     public ImageView getRoom(){

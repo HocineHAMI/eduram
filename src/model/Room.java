@@ -1,5 +1,9 @@
 package model;
 
+import javafx.scene.layout.Pane;
+import view.PasswordView;
+import view.RoomView;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,7 +16,8 @@ public class Room {
     private ArrayList<Virus> viruses;
     private int positionX;
     private int positionY;
-    Game game;
+    private RoomView roomView;
+    private Game game;
 
     public Room(Building building, int i, int j, Game g){
         game=g;
@@ -94,5 +99,12 @@ public class Room {
         for (int i = 0; i < virustmp.size(); i++) {
             viruses.remove(virustmp.get(i));
         }
+    }
+
+    public RoomView getRoomView(){
+        return roomView;
+    }
+    public void setRoomView(RoomView rv){
+        roomView = rv;
     }
 }

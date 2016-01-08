@@ -3,6 +3,8 @@ package view;
 import controller.PasswordSelectControler;
 import javafx.event.EventHandler;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import model.Game;
@@ -14,6 +16,7 @@ import model.Password;
 public class PasswordView {
     private Hyperlink passView;
     private Password password;
+
     private Game game;
     private MapView map;
 
@@ -25,7 +28,9 @@ public class PasswordView {
         passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                PasswordSelectControler.selectPass(game, password,map);
+                PasswordSelectControler.selectPass(game, password, map);
+                m.getSelectedPass().getBond().getRoomView().getRoom().setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
+
             }
         });
         switch (currentPass.getPassType()){
