@@ -126,7 +126,7 @@ public class MapView extends Application {
         buttonAntidote.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(CreateAntidoteControler.creerAntidote(game, false)){
+                if(CreateAntidoteControler.creerAntidote(game)){
                     commandPanelViewGroup.getChildren().clear();
                     final Stage dialog = new Stage();
                     dialog.initModality(Modality.APPLICATION_MODAL);
