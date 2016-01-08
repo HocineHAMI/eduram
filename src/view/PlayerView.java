@@ -16,9 +16,9 @@ import model.Player;
  * Created by victor on 06/01/16.
  */
 public class PlayerView {
-    private ImageView imagePlayer;
-    private Player player;
-    private Game game;
+    protected ImageView imagePlayer;
+    protected Player player;
+    protected Game game;
 
     public PlayerView(int i, Game g, Player crtPlayer){
         player = crtPlayer;
