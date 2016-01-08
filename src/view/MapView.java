@@ -34,8 +34,8 @@ public class MapView extends Application {
     private Label eclosionLabel;
     private VBox passwordBox;
     private HBox antivirusBox;
-    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonSpecial, buttonLost;
-    private Text titlePassword, titleAntiVirus;
+    private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost;
+    private Text textStack, titlePassword, titleAntiVirus;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -113,14 +113,6 @@ public class MapView extends Application {
             }
         });
 
-        buttonSpecial = new Button("Action Spéciale");
-        buttonSpecial.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("compétence spéciale");
-                draw();
-            }
-        });
 
         buttonAntidote = new Button("Créer antidote !");
         buttonAntidote.setOnAction(new EventHandler<ActionEvent>() {
@@ -145,6 +137,8 @@ public class MapView extends Application {
         antivirusBox = new HBox();
         titleAntiVirus = new Text("Anti-Virus");
         titleAntiVirus.setFont(Font.font("Verdana", 20));
+        textStack = new Text("Le paquet de carte est plein");
+        titleAntiVirus.setFont(Font.font("Verdana", 20));
 
         eclosionLabel = new Label("Il y a " + game.getNbPropagation() +" éclosions.");
         eclosionLabel.setFont(Font.font("Verdana", 20));
@@ -155,7 +149,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(25);
         ((FlowPane) commandPanelViewGroup).setHgap(25);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonSpecial, buttonLost, passwordBox, titleAntiVirus, antivirusBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, textStack, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox, titleAntiVirus, antivirusBox);
         commandPanelViewGroup.setMaxSize(30,30);
 
 
@@ -216,6 +210,9 @@ public class MapView extends Application {
             }
             gameViewGroup.getChildren().add(tmpPlayer.getImagePlayer());
         }
+
+        //Display stack
+        textStack.setText("Il reste " + game.getPstack().getPstack().size() + " cartes.");
 
         //Display password
         titlePassword = new Text("Passwords");
