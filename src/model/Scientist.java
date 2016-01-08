@@ -1,5 +1,7 @@
 package model;
 
+import controller.CreateAntidoteControler;
+
 /**
  * Created by victor on 08/12/15.
  */
