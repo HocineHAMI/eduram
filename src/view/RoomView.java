@@ -26,7 +26,8 @@ public class RoomView {
                public void handle(MouseEvent event) {
                    mapView.setSelectedRoom(currentRoom);
                    room.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
-                   System.out.println("test : "+currentRoom);
+                   System.out.println("room selected : "+currentRoom);
+                   slctRoom.draw();
                }
            });
         room.setFitHeight(60);

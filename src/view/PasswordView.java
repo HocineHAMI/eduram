@@ -16,11 +16,9 @@ public class PasswordView {
     private Password password;
     private Game game;
 
-
     public PasswordView(Game sgame, Password currentPass){
-
         password = currentPass;
-        this.game=sgame;
+        this.game = sgame;
         passView = new Hyperlink(password.getPassword());
         passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

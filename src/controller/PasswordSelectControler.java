@@ -12,4 +12,5 @@ public class PasswordSelectControler {
         game.setSelectedPass(password);
 
     }
+
 }
