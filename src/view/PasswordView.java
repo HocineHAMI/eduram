@@ -1,5 +1,6 @@
 package view;
 
+import controller.PasswordSelectControler;
 import javafx.event.EventHandler;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.input.MouseEvent;
@@ -13,14 +14,16 @@ import model.Password;
 public class PasswordView {
     private Hyperlink passView;
     private Password password;
+    private Game game;
 
-    public PasswordView(Game game, Password currentPass){
+    public PasswordView(Game sgame, Password currentPass){
         password = currentPass;
+        this.game = sgame;
         passView = new Hyperlink(password.getPassword());
         passView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                game.setSelectedPass(password);
+                PasswordSelectControler.selectPass(game);
             }
         });
         switch (currentPass.getPassType()){
