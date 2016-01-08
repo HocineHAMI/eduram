@@ -38,6 +38,129 @@ public /*abstract*/ class Player {
 
     }
 
+    public boolean createAntidote(){
+
+        int nbRouge=0;
+        int nbJaune=0;
+        int nbVert=0;
+        int nbBleu=0;
+        for(Password p: game.getCurrentPlayer().getListPassword()){
+
+            if(p.getPassType()== VirusType.RED){
+                nbRouge++;
+            }
+            if(p.getPassType()==VirusType.BLUE){
+                nbBleu++;
+            }
+            if(p.getPassType()==VirusType.GREEN){
+                nbVert  ++;
+            }
+            if(p.getPassType()==VirusType.GOLD){
+                nbJaune++;
+            }
+        }
+
+        int i=0;
+        ArrayList<Password> l = new ArrayList<Password>();
+        if(nbBleu>=3&&!game.isAntidoteBleu()){
+            for(Password p: game.getCurrentPlayer().getListPassword()){
+                if(p.getPassType()==VirusType.BLUE){
+                    l.add(p);
+                    i++;
+                    if(i==3) {
+                        for(Password p1 : l){
+                            game.getCurrentPlayer().getListPassword().remove(p1);
+                        }
+                        game.setAntidoteBleu(true);
+                        if(game.isAntidoteBleu()&&game.isAntidoteJaune()&&game.isAntidoteVert()&&game.isAntidoteRouge())
+                            return true;
+                        game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
+                        if(game.getCurrentPlayer().getNbActions()>=4) {
+                            game.getCurrentPlayer().setNbActions(0);
+                            game.nextTurn();
+                        }
+                        break;
+
+                    }
+                }
+            }
+        }else
+        if(nbRouge>=3&&!game.isAntidoteRouge()){
+            for(Password p: game.getCurrentPlayer().getListPassword()){
+                if(p.getPassType()==VirusType.RED){
+                    l.add(p);;
+                    i++;
+                    if(i==3) {
+                        for(Password p1 : l){
+                            game.getCurrentPlayer().getListPassword().remove(p1);
+                        }
+                        game.setAntidoteRouge(true);
+                        if(game.isAntidoteBleu()&&game.isAntidoteJaune()&&game.isAntidoteVert()&&game.isAntidoteRouge())
+                            return true;
+                        game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
+                        if(game.getCurrentPlayer().getNbActions()>=4) {
+                            game.getCurrentPlayer().setNbActions(0);
+                            game.nextTurn();
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        else
+        if(nbVert>=3&&!game.isAntidoteVert()){
+            for(Password p: game.getCurrentPlayer().getListPassword()){
+                if(p.getPassType()==VirusType.GREEN){
+                    l.add(p);
+                    i++;
+                    if(i==3) {
+                        for(Password p1 : l){
+                            game.getCurrentPlayer().getListPassword().remove(p1);
+                        }
+                        game.setAntidoteVert(true);
+                        if(game.isAntidoteBleu()&&game.isAntidoteJaune()&&game.isAntidoteVert()&&game.isAntidoteRouge())
+                            return true;
+                        game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
+                        if(game.getCurrentPlayer().getNbActions()>=4) {
+                            game.getCurrentPlayer().setNbActions(0);
+                            game.nextTurn();
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        else
+        if(nbJaune>=3&&!game.isAntidoteJaune()){
+            for(Password p: game.getCurrentPlayer().getListPassword()){
+                if(p.getPassType()==VirusType.GOLD){
+                    l.add(p);
+                    i++;
+                    if(i==3) {
+                        for(Password p1 : l){
+                            game.getCurrentPlayer().getListPassword().remove(p1);
+                        }
+
+                        game.setAntidoteJaune(true);
+                        if(game.isAntidoteBleu()&&game.isAntidoteJaune()&&game.isAntidoteVert()&&game.isAntidoteRouge())
+                            return true;
+                        game.getCurrentPlayer().setNbActions(game.getCurrentPlayer().getNbActions()+1);
+                        if(game.getCurrentPlayer().getNbActions()>=4) {
+                            game.getCurrentPlayer().setNbActions(0);
+                            game.nextTurn();
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        return false;
+    }
+
     public boolean moveTP(Room next, Password pass){
 
         if(next==null)
@@ -67,7 +190,7 @@ public /*abstract*/ class Player {
 
         if((r.getViruses().size()!=0)&&(this.position==r))
         {
-            switch (r.getBuilding().getColor()){
+            switch (r.getViruses().get(0).getVirusType()){
                 case GREEN:
                     if(game.isAntidoteVert()){
                         r.deleteAllVirus(VirusType.GREEN);
