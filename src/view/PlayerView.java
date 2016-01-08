@@ -20,7 +20,7 @@ public class PlayerView {
     private Player player;
     private Game game;
 
-    public PlayerView(Game g, Player crtPlayer){
+    public PlayerView(int i, Game g, Player crtPlayer){
         player = crtPlayer;
         this.game = g;
         imagePlayer = new ImageView(new Image("file:img/gamePlayer.png"));
@@ -30,11 +30,11 @@ public class PlayerView {
                 PlayerSelectControler.selectPlayer(game, player);
             }
         });
-        imagePlayer.setFitWidth(40);
-        imagePlayer.setFitHeight(50);
+        imagePlayer.setFitWidth(30);
+        imagePlayer.setFitHeight(40);
 
-        imagePlayer.setX(crtPlayer.getPositionRoom().getPositionX());
-        imagePlayer.setY(crtPlayer.getPositionRoom().getPositionY());
+        imagePlayer.setX(crtPlayer.getPositionRoom().getPositionX()+i*20);
+        imagePlayer.setY(crtPlayer.getPositionRoom().getPositionY()+10);
     }
     public void setSelectPlayer(){
         imagePlayer.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));

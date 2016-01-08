@@ -196,10 +196,10 @@ public class MapView extends Application {
             PlayerView tmpPlayer;
             Player p = game.getPlayers().get(i);
             if (p == game.getCurrentPlayer()){
-                tmpPlayer = new PlayerView(game, p);
+                tmpPlayer = new PlayerView(i, game, p);
                 tmpPlayer.setSelectPlayer();
             }else{
-                tmpPlayer = new PlayerView(game, p);
+                tmpPlayer = new PlayerView(i, game, p);
                 tmpPlayer.unselectedPlayer();
             }
             gameViewGroup.getChildren().add(tmpPlayer.getImagePlayer());
