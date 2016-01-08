@@ -171,14 +171,22 @@ public class MapView extends Application {
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
                 gameViewGroup.getChildren().add(tmpRoomView.getRoom());
 
+                //r.infect(new Virus(r, VirusType.RED));
+                //r.infect(new Virus(r, VirusType.BLUE));
+                /*r.infect(new Virus(r, VirusType.GREEN));
+
+                r.infect(new Virus(r, VirusType.GREEN));
+                r.infect(new Virus(r, VirusType.GOLD));*/
+
                 for (Room nr : r.getNeighborsRooms()){
                     Line tmpLine = new Line(r.getPositionX()+30, r.getPositionY()+50, nr.getPositionX()+30, nr.getPositionY()+50);
                     tmpLine.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.WHITE.deriveColor(0, 0, 0, 0.75), 25, 0, 10, 10));
                     gameViewGroup.getChildren().add(tmpLine);
                 }
+                int i = 0;
                 for (Virus v : r.getViruses()){
-                    gameViewGroup.getChildren().add(new VirusView(v.getVirusType(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
-
+                    gameViewGroup.getChildren().add(new VirusView(i, v.getVirusType(), tmpRoomView.getPositionX(), tmpRoomView.getPositionY()).getVirus());
+                    i++;
                 }
 
             }

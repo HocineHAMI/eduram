@@ -13,35 +13,35 @@ import java.util.Random;
 public class VirusView {
     private ImageView virus;
 
-    public VirusView(VirusType type, int positionX, int positionY){
+    public VirusView(int i, VirusType type, int positionX, int positionY){
         switch (type){
             case GREEN:
                 virus = new ImageView(new Image("file:img/greenVirus.png"));
-                virus.setFitWidth(50);
-                virus.setFitHeight(50);
-                virus.setX(positionX);
-                virus.setY(positionY);
+                virus.setFitWidth(25);
+                virus.setFitHeight(30);
+                virus.setX(positionX-10+i*30);
+                virus.setY(positionY-22);
                 break;
             case GOLD:
                 virus = new ImageView(new Image("file:img/goldVirus.png"));
-                virus.setFitWidth(50);
+                virus.setFitWidth(30);
                 virus.setFitHeight(30);
-                virus.setX(positionX);
-                virus.setY(positionY);
+                virus.setX(positionX-12+i*30);
+                virus.setY(positionY-22);
                 break;
             case RED:
                 virus = new ImageView(new Image("file:img/redVirus.png"));
-                virus.setFitWidth(60);
-                virus.setFitHeight(40);
-                virus.setX(positionX);
-                virus.setY(positionY);
+                virus.setFitWidth(30);
+                virus.setFitHeight(30);
+                virus.setX(positionX-12+i*30);
+                virus.setY(positionY-22);
                 break;
             case BLUE:
                 virus = new ImageView(new Image("file:img/blueVirus.png"));
-                virus.setFitWidth(60);
-                virus.setFitHeight(40);
-                virus.setX(positionX);
-                virus.setY(positionY);
+                virus.setFitWidth(25);
+                virus.setFitHeight(30);
+                virus.setX(positionX-10+i*30);
+                virus.setY(positionY-22);
                 break;
         }
 
