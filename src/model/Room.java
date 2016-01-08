@@ -75,4 +75,20 @@ public class Room {
     public int getPositionY() {
         return positionY;
     }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void deleteAllVirus(VirusType type) {
+        ArrayList<Virus> virustmp = new ArrayList<Virus>();
+        for(Virus v : this.viruses){
+            if (v.getVirusType() == type){
+                virustmp.add(v);
+            }
+        }
+        for (int i = 0; i < virustmp.size(); i++) {
+            viruses.remove(virustmp.get(i));
+        }
+    }
 }

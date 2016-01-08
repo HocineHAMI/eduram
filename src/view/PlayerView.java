@@ -18,9 +18,11 @@ import model.Player;
 public class PlayerView {
     private ImageView imagePlayer;
     private Player player;
+    private Game game;
 
-    public PlayerView(Game game, Player crtPlayer){
+    public PlayerView(Game g, Player crtPlayer){
         player = crtPlayer;
+        this.game = g;
         imagePlayer = new ImageView(new Image("file:img/gamePlayer.png"));
         imagePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

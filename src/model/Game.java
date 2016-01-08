@@ -72,7 +72,7 @@ public class Game {
         players = new ArrayList<Player>();
         for (int i = 0; i < Nbplayers; i++)
         {
-            players.add(new Player(map.getBuildings().get(0).getRooms().get(2), pstack));
+            players.add(new Player(map.getBuildings().get(0).getRooms().get(2), pstack, this));
         }
         currentplayer = players.get(0);
     }

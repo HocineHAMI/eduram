@@ -1,17 +1,21 @@
 package model;
 
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 /**
  * Created by victor on 08/12/15.
  */
 public /*abstract*/ class Player {
+    private Game game;
     private Room position;
     private ArrayList<Password> passwords;
     private int nbActions=0;
 
 
-    public Player(Room position, PasswordStack passStack){
+    public Player(Room position, PasswordStack passStack, Game game){
+        this.game=game;
         passwords = new ArrayList<Password>();
         getCardFromStack(passStack);
         System.out.println("Creation Player !!!!!");
@@ -49,6 +53,24 @@ public /*abstract*/ class Player {
     {
         if((r.getViruses().size()!=0)&&(this.position==r))
         {
+            switch (r.getBuilding().getColor()){
+                case GREEN:
+                    if(game.isAntidoteVert())
+                        r.deleteAllVirus(VirusType.GREEN);
+                    return true;
+                case GOLD:
+                    if(game.isAntidoteJaune())
+                        r.deleteAllVirus(VirusType.GOLD);
+                    return true;
+                case RED:
+                    if(game.isAntidoteRouge())
+                        r.deleteAllVirus(VirusType.RED);
+                    return true;
+                case BLUE:
+                    if(game.isAntidoteBleu())
+                        r.deleteAllVirus(VirusType.BLUE);
+                    return true;
+            }
             r.delVirus();
             return true;
         }
@@ -57,13 +79,6 @@ public /*abstract*/ class Player {
 
     public ArrayList<Password> getListPassword(){ return passwords;}
     public Room getPositionRoom(){ return position;}
-    public static void main(String[] args){
-        Map m = new Map();
-        Player p1 = new Player(m.getBuildings().get(1).getRooms().get(1), new PasswordStack(m));
-        p1.move((m.getBuildings().get(2).getRooms().get(1)));
-        p1.move((m.getBuildings().get(1).getRooms().get(2)));
-
-    }
 
     public int getNbActions() {
         return nbActions;
