@@ -13,9 +13,11 @@ public class Building
     private int positionX;
     private int positionY;
     VirusType colorOfVirus;
+    Game game;
 
-    public Building(int width, int height, int x, int y, VirusType t)
+    public Building(int width, int height, int x, int y, VirusType t, Game g)
     {
+        game=g;
         colorOfVirus = t;
         rooms = new ArrayList<Room>();
         //create a tmp array in order to search neighbours easier
@@ -29,7 +31,7 @@ public class Building
         {
             for (int j = 0; j < width; j++)
             {
-                rooms.add(new Room(this, i*130, j*90));
+                rooms.add(new Room(this, i*130, j*90,game));
                 roomsTmp[i][j] = rooms.get(rooms.size()-1);
             }
         }
@@ -110,14 +112,6 @@ public class Building
     public Room getRoomsTmp() {return roomsTmp;}
     public int getPositionX() { return positionX; }
     public int getPositionY() { return positionY; }
-
-    public static void main(String[] args){
-
-        Building b = new Building(5,3,99,99, VirusType.GOLD);
-        System.out.println(b);
-
-
-    }
 
     public VirusType getColor() {
 

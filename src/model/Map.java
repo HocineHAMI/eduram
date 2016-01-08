@@ -10,13 +10,13 @@ public class Map {
 
     //generate a map with 4 statics buildings
 
-    public Map(){
+    public Map(Game game){
 
             buildings = new ArrayList<Building>();
-            buildings.add(new Building(3,2,50,80,VirusType.GREEN));
-            buildings.add(new Building(5,2,330,80,VirusType.BLUE));
-            buildings.add(new Building(4,2,610,80,VirusType.RED));
-            buildings.add(new Building(3,2,890,80,VirusType.GOLD));
+            buildings.add(new Building(3,2,50,80,VirusType.GREEN,game));
+            buildings.add(new Building(5,2,330,80,VirusType.BLUE,game));
+            buildings.add(new Building(4,2,610,80,VirusType.RED,game));
+            buildings.add(new Building(3,2,890,80,VirusType.GOLD,game));
         for (int i = 0; i < buildings.size(); i++) {
             buildings.get(i).deleteLinks();
         }
@@ -40,10 +40,6 @@ public class Map {
 
     public ArrayList<Building> getBuildings() {
         return buildings;
-    }
-
-    public static void main(String[] args){
-        System.out.println(new Map());
     }
 
 }

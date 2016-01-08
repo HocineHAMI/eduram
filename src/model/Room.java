@@ -12,8 +12,10 @@ public class Room {
     private ArrayList<Virus> viruses;
     private int positionX;
     private int positionY;
+    Game game;
 
-    public Room(Building building, int i, int j){
+    public Room(Building building, int i, int j, Game g){
+        game=g;
         viruses = new ArrayList<Virus>();
         neighborsRooms = new ArrayList<Room>();
         this.building = building;
@@ -47,7 +49,7 @@ public class Room {
     public void infect(Virus virus){
         if(viruses.size()>=3){
             System.out.println("PROPAGATION !!! ");
-            Virus.propagation(this, this.getViruses().get(0));
+            Virus.propagation(this, this.getViruses().get(0), game);
         }
         else{
             System.out.println("Infection !");

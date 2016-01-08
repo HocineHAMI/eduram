@@ -137,7 +137,9 @@ public class MapView extends Application {
             }
         });
         passwordBox = new VBox();
-        eclosionLabel = new Label("Il y a " + 0 +" éclosions.");
+
+
+        eclosionLabel = new Label("Il y a " + game.getNbPropagation() +" éclosions.");
         eclosionLabel.setFont(Font.font("Verdana", 20));
         gameViewGroup = new AnchorPane();
         gameViewGroup.setStyle("-fx-background-color: DAE6F3;");
@@ -164,8 +166,9 @@ public class MapView extends Application {
     {
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
+        eclosionLabel.setText("Il y a " + game.getNbPropagation() +" éclosions.");
         for (Building b : this.game.getMap().getBuildings()){
-        gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
+            gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
 
             for (Room r : b.getRooms()){
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
@@ -214,6 +217,9 @@ public class MapView extends Application {
 
     private boolean testDefaite() {
         if(game.getPstack().getPstack().size()==0){
+            return true;
+        }
+        if(game.getNbPropagation()>=2){
             return true;
         }
         return false;
