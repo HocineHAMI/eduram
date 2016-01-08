@@ -15,10 +15,7 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -36,8 +33,9 @@ public class MapView extends Application {
     private Pane windowsGroup, gameViewGroup, commandPanelViewGroup;
     private Label eclosionLabel;
     private VBox passwordBox;
+    private HBox antivirusBox;
     private Button buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost;
-    private Text title;
+    private Text titlePassword, titleAntiVirus;
     private int windowsSizeX, windowsSizeY;
     private Game game;
     private Room selectedRoom;
@@ -79,7 +77,7 @@ public class MapView extends Application {
             @Override
             public void handle(ActionEvent event) {
                 if(DeleteVirusControler.deleteVirus(game, selectedRoom))
-                    System.out.println("supression de virus !! : ");
+                System.out.println("supression de virus !! : ");
                 draw();
             }
         });
@@ -115,7 +113,7 @@ public class MapView extends Application {
             }
         });
 
-        buttonAntidote = new Button("Creer antidote !");
+        buttonAntidote = new Button("Créer antidote !");
         buttonAntidote.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -135,7 +133,9 @@ public class MapView extends Application {
             }
         });
         passwordBox = new VBox();
-
+        antivirusBox = new HBox();
+        titleAntiVirus = new Text("Anti-Virus");
+        titleAntiVirus.setFont(Font.font("Verdana", 20));
 
         eclosionLabel = new Label("Il y a " + game.getNbPropagation() +" éclosions.");
         eclosionLabel.setFont(Font.font("Verdana", 20));
@@ -146,7 +146,7 @@ public class MapView extends Application {
         ((FlowPane) commandPanelViewGroup).setVgap(25);
         ((FlowPane) commandPanelViewGroup).setHgap(25);
         commandPanelViewGroup.setStyle("-fx-background-color: DAE6F3;"); //#f9f9f9
-        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox);
+        commandPanelViewGroup.getChildren().addAll(eclosionLabel, buttonDeleteVirus, buttonMove, buttonTP1, buttonAntidote, buttonGivePass, buttonLost, passwordBox, titleAntiVirus, antivirusBox);
         commandPanelViewGroup.setMaxSize(30,30);
 
 
@@ -164,10 +164,11 @@ public class MapView extends Application {
     {
         gameViewGroup.getChildren().clear();
         passwordBox.getChildren().clear();
+        antivirusBox.getChildren().clear();
         eclosionLabel.setText("Il y a " + game.getNbPropagation() + " éclosions.");
         selectedTpRoom = null;
         for (Building b : this.game.getMap().getBuildings()){
-            gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
+        gameViewGroup.getChildren().add((new BuildingView(b.getPositionX(), b.getPositionY(), b.getColor()).getBuilding()));
 
             for (Room r : b.getRooms()){
                 RoomView tmpRoomView = (new RoomView(r,this ,r.getPositionX(), r.getPositionY(), b.getPositionX(), b.getPositionY()));
@@ -208,12 +209,18 @@ public class MapView extends Application {
         }
 
         //Display password
-        title = new Text("Passwords");
-        title.setFont(Font.font("Verdana", 20));
-        passwordBox.getChildren().add(title);
+        titlePassword = new Text("Passwords");
+        titlePassword.setFont(Font.font("Verdana", 20));
+        passwordBox.getChildren().add(titlePassword);
         for (Password p : game.getCurrentPlayer().getListPassword()){
             passwordBox.getChildren().add((new PasswordView(game, p,this)).getPassView());
         }
+
+        //Draw Antivirus
+        if (game.isAntidoteBleu()) antivirusBox.getChildren().add(new AntiVirusView(VirusType.BLUE).getAntiVirus());
+        if (game.isAntidoteJaune()) antivirusBox.getChildren().add(new AntiVirusView(VirusType.GOLD).getAntiVirus());
+        if (game.isAntidoteRouge()) antivirusBox.getChildren().add(new AntiVirusView(VirusType.RED).getAntiVirus());
+        if (game.isAntidoteVert()) antivirusBox.getChildren().add(new AntiVirusView(VirusType.GREEN).getAntiVirus());
 
         //Defeat gestion
         if(testDefaite()){
@@ -226,7 +233,7 @@ public class MapView extends Application {
         if(game.getPstack().getPstack().size()==0){
             return true;
         }
-        if(game.getNbPropagation()>=2){
+        if(game.getNbPropagation()>=5){
             return true;
         }
         return false;
